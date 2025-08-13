@@ -13,7 +13,7 @@ const Icon: React.FC<IconProps> = ({ label, img, onClick }) => {
       onDoubleClick={onClick}
     >
       <img
-        src={img}
+        src={`/icons/${img}`}
         alt={label}
         className="w-12 h-12"
         style={{ imageRendering: 'pixelated' }}

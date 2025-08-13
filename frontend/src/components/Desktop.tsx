@@ -27,7 +27,7 @@ const Desktop: React.FC = () => {
       <div className="p-4 grid grid-cols-2 gap-4">
         <Icon
           label="About Me"
-          img="/icons/mycomputer.png"
+          img="/mycomputer.png"
           onClick={() =>
             openWindow(
               'About Me',
@@ -40,7 +40,7 @@ const Desktop: React.FC = () => {
         />
         <Icon
           label="Projects"
-          img="/icons/folder.png"
+          img="/folder.png"
           onClick={() =>
             openWindow(
               'Projects',
