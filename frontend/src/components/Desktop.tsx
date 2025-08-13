@@ -22,8 +22,10 @@ const Desktop: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-win95Gray font-win95 relative">
-      {/* Desktop Icons */}
+    <div 
+      className="h-screen w-screen font-win95 relative bg-cover bg-center"
+      style={{ backgroundImage: "url('/icons/wallpaper.jpg')"}}>
+
       <div className="p-4 grid grid-cols-2 gap-4">
         <Icon
           label="About Me"
@@ -55,7 +57,6 @@ const Desktop: React.FC = () => {
         />
       </div>
 
-      {/* Windows */}
       {windows.map((win) => (
         <Window
           key={win.id}
@@ -66,7 +67,6 @@ const Desktop: React.FC = () => {
         </Window>
       ))}
 
-      {/* Taskbar */}
       <Taskbar windows={windows} />
     </div>
   );

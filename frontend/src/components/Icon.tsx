@@ -18,7 +18,7 @@ const Icon: React.FC<IconProps> = ({ label, img, onClick }) => {
         className="w-12 h-12"
         style={{ imageRendering: 'pixelated' }}
       />
-      <span className="text-black text-xs mt-1">{label}</span>
+      <span className="text-white text-xs mt-1">{label}</span>
     </div>
   );
 };
