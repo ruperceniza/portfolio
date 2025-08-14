@@ -4,21 +4,33 @@ import Icon from '@/components/Icon';
 import Window from '@/components/Window';
 import Taskbar from '@/components/Taskbar';
 
-interface WindowData {
+export interface WindowData {
   id: number;
   title: string;
   content: ReactNode;
+  minimized?: boolean;
 }
 
 const Desktop: React.FC = () => {
   const [windows, setWindows] = useState<WindowData[]>([]);
 
   const openWindow = (title: string, content: ReactNode) => {
-    setWindows(prev => [...prev, { id: Date.now(), title, content }]);
+    setWindows((prev) => [
+      ...prev,
+      { id: Date.now(), title, content, minimized: false }
+    ]);
   };
 
   const closeWindow = (id: number) => {
     setWindows((prev) => prev.filter((w) => w.id !== id));
+  };
+
+  const toggleMinimize = (id: number) => {
+    setWindows((prev) =>
+      prev.map((w) =>
+        w.id === id ? { ...w, minimized: !w.minimized } : w
+      )
+    );
   };
 
   return (
@@ -34,7 +46,7 @@ const Desktop: React.FC = () => {
             openWindow(
               'About Me',
               <div>
-                <p>Hello! I’m your name.</p>
+                <p>Hello! I’m Ruper.</p>
                 <p>This is my retro portfolio site.</p>
               </div>
             )
@@ -57,17 +69,25 @@ const Desktop: React.FC = () => {
         />
       </div>
 
-      {windows.map((win) => (
-        <Window
-          key={win.id}
-          title={win.title}
-          onClose={() => closeWindow(win.id)}
-        >
-          {win.content}
-        </Window>
-      ))}
+      {windows.map(
+        (win) =>
+          !win.minimized && (
+            <Window
+              key={win.id}
+              title={win.title}
+              onClose={() => closeWindow(win.id)}
+              onMinimize={() => toggleMinimize(win.id)} 
+            >
+              {win.content}
+            </Window>
+          )
+      )}
 
-      <Taskbar windows={windows} />
+      <Taskbar
+        windows={windows}
+        openWindow={openWindow}
+        toggleMinimize={toggleMinimize}
+      />
     </div>
   );
 };

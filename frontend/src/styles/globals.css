@@ -14,8 +14,89 @@
   }
 }
 
+#__next-build-watcher,
+#__next-route-announcer__,
+#__next_dev_client_overlay__,
+#__next-dev-overlay,
+#__next-dev-overlay * {
+  display: none !important;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.win95-border {
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+
+.win95-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.win95-menu-item:hover {
+  background-color: #000080; 
+  color: white;
+}
+
+.writing-mode-vertical {
+  writing-mode: vertical-rl;  
+  text-orientation: upright;
+}
+
+.taskbar {
+  display: flex;
+  align-items: center;
+  background-color: #c0c0c0;
+  padding: 2px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+
+.taskbar-windows {
+  display: flex;
+  gap: 2px;
+  margin-left: 5px;
+}
+
+.taskbar-button {
+  background-color: #c0c0c0;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-family: "Tahoma", sans-serif;
+  cursor: pointer;
+}
+
+.taskbar-button:hover {
+  background-color: #dcdcdc;
+}
+
+.taskbar-button.active {
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+}
+
+.taskbar-button.inactive {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  background-color: #a0a0a0;
 }
