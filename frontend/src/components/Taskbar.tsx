@@ -7,9 +7,17 @@ interface TaskbarProps {
   windows: WindowData[];
   openWindow: (title: string, content: React.ReactNode) => void;
   toggleMinimize: (id: number) => void;
+  setActiveWindowId: (id: number) => void; 
+  activeWindowId: number | null;
 }
 
-const Taskbar: React.FC<TaskbarProps> = ({ windows, openWindow, toggleMinimize }) => {
+const Taskbar: React.FC<TaskbarProps> = ({
+  windows,
+  openWindow,
+  toggleMinimize,
+  setActiveWindowId,
+  activeWindowId
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -24,6 +32,13 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, openWindow, toggleMinimize }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleTaskbarClick = (win: WindowData) => {
+    if (win.minimized) {
+      toggleMinimize(win.id);
+    }
+    setActiveWindowId(win.id);
+  };
 
   return (
     <div className="absolute bottom-0 left-0 right-0 h-10 bg-gray-300 border-t border-gray-500 flex items-center px-2">
@@ -47,10 +62,13 @@ const Taskbar: React.FC<TaskbarProps> = ({ windows, openWindow, toggleMinimize }
         {windows.map((win) => (
           <button
             key={win.id}
-            onClick={() => toggleMinimize(win.id)}
-            className={`flex items-center px-2 py-1 text-sm border border-gray-500 bg-gray-200 hover:bg-gray-100 truncate ${
-              win.minimized ? "opacity-60" : "opacity-100"
-            }`}
+            onClick={() => handleTaskbarClick(win)}
+            className={`flex items-center px-2 py-1 text-sm border border-gray-500 truncate
+              ${win.id === activeWindowId
+                ? "bg-blue-500 text-white hover:bg-blue-400"
+                : "bg-gray-200 hover:bg-gray-100"
+              }
+              ${win.minimized ? "opacity-60" : "opacity-100"}`}
             title={win.title}
           >
             {win.title}

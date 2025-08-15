@@ -9,28 +9,48 @@ export interface WindowData {
   title: string;
   content: ReactNode;
   minimized?: boolean;
+  zIndex: number; 
 }
 
 const Desktop: React.FC = () => {
   const [windows, setWindows] = useState<WindowData[]>([]);
+  const [activeWindowId, setActiveWindowId] = useState<number | null>(null);
+  const [highestZIndex, setHighestZIndex] = useState(1);
+
+  const bringToFront = (id: number) => {
+    setHighestZIndex(prev => prev + 1);
+    setWindows(prev =>
+      prev.map(w => w.id === id ? { ...w, zIndex: highestZIndex + 1 } : w)
+    );
+    setActiveWindowId(id);
+  };
 
   const openWindow = (title: string, content: ReactNode) => {
-    setWindows((prev) => [
+    const id = Date.now();
+    const newZIndex = highestZIndex + 1;
+    setHighestZIndex(newZIndex);
+
+    setWindows(prev => [
       ...prev,
-      { id: Date.now(), title, content, minimized: false }
+      { id, title, content, minimized: false, zIndex: newZIndex }
     ]);
+    setActiveWindowId(id);
   };
 
   const closeWindow = (id: number) => {
-    setWindows((prev) => prev.filter((w) => w.id !== id));
+    setWindows(prev => prev.filter(w => w.id !== id));
+    if (activeWindowId === id) {
+      setActiveWindowId(null);
+    }
   };
 
   const toggleMinimize = (id: number) => {
-    setWindows((prev) =>
-      prev.map((w) =>
+    setWindows(prev =>
+      prev.map(w =>
         w.id === id ? { ...w, minimized: !w.minimized } : w
       )
     );
+    bringToFront(id);
   };
 
   return (
@@ -70,13 +90,16 @@ const Desktop: React.FC = () => {
       </div>
 
       {windows.map(
-        (win) =>
+        win =>
           !win.minimized && (
             <Window
               key={win.id}
               title={win.title}
               onClose={() => closeWindow(win.id)}
               onMinimize={() => toggleMinimize(win.id)} 
+              onFocus={() => bringToFront(win.id)} 
+              isActive={activeWindowId === win.id}
+              zIndex={win.zIndex} 
             >
               {win.content}
             </Window>
@@ -87,6 +110,8 @@ const Desktop: React.FC = () => {
         windows={windows}
         openWindow={openWindow}
         toggleMinimize={toggleMinimize}
+        activeWindowId={activeWindowId}
+        setActiveWindowId={setActiveWindowId}
       />
     </div>
   );
