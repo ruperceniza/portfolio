@@ -3,8 +3,10 @@ import Draggable from 'react-draggable';
 
 interface WindowProps {
   title: string;
+  iconSrc?: string;
   onClose: () => void;
   onMinimize?: () => void; 
+  onMaximize?: () => void;
   onFocus?: () => void;
   isActive?: boolean;
   zIndex?: number;
@@ -13,8 +15,10 @@ interface WindowProps {
 
 const Window: React.FC<WindowProps> = ({
   title,
+  iconSrc,
   onClose,
   onMinimize,
+  onMaximize,
   onFocus,
   isActive,
   zIndex,
@@ -22,52 +26,114 @@ const Window: React.FC<WindowProps> = ({
 }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
 
+  const BAR = 22;
+  const BTN = 18;
+  const CLOSE_BTN = 20;
+
   return (
     <Draggable handle=".window-titlebar" nodeRef={nodeRef}>
       <div
         ref={nodeRef}
-        className={`absolute top-20 left-20 w-[600px] 
-          bg-[#C0C0C0] 
-          border-2 
-          border-t-white border-l-white border-b-[#808080] border-r-[#808080] 
-          shadow-[2px_2px_#000]`}
-        style={{ zIndex }}
         onMouseDown={onFocus}
+        style={{
+          zIndex,
+          width: 500,
+          background: "#C0C0C0",
+          border: "2px solid #000",
+          boxShadow: "2px 2px #000",
+          position: "absolute",
+          top: 100,
+          left: 100,
+        }}
       >
         <div
-          className="window-titlebar flex justify-between items-center 
-            bg-[#000080] text-white h-7 px-2 select-none
-            border-b border-b-[#808080]"
+          className="window-titlebar"
+          style={{
+            height: BAR,
+            background: isActive ? "navy" : "gray",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: 13,
+            display: "flex",
+            alignItems: "center",
+            paddingLeft: 4,
+            position: "relative",
+            userSelect: "none",
+          }}
         >
-          <span className="font-bold">{title}</span>
-          <div className="flex gap-1">
-            {onMinimize && (
-              <button
-                className="w-6 h-6 bg-[#C0C0C0] border-2 border-t-white border-l-white border-b-[#808080] border-r-[#808080] text-black flex items-center justify-center"
-                onClick={onMinimize}
-              >
-                _
-              </button>
-            )}
-            <button
-              className="w-6 h-6 bg-[#C0C0C0] border-2 border-t-white border-l-white border-b-[#808080] border-r-[#808080] text-black flex items-center justify-center"
-              onClick={onClose}
-            >
-              X
-            </button>
+          {iconSrc && (
+            <img
+              src={iconSrc}
+              alt=""
+              style={{ width: 16, height: 16, marginRight: 4 }}
+            />
+          )}
+          {title}
+
+          <div
+            style={{
+              position: "absolute",
+              right: 2,
+              top: Math.floor((BAR - BTN) / 2),
+              height: BTN,
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Win95Btn size={BTN} onClick={onMinimize} ariaLabel="Minimize">
+              <div style={{ width: 8, height: 2, background: "#000" }} />
+            </Win95Btn>
+
+            <Win95Btn size={BTN} onClick={onMaximize} ariaLabel="Maximize">
+              <div style={{ width: 10, height: 8, border: "1px solid #000" }} />
+            </Win95Btn>
+
+            <Win95Btn size={CLOSE_BTN} onClick={onClose} ariaLabel="Close">
+              <span style={{ color: "#000", fontWeight: 700, fontSize: 12 }}>
+                ×
+              </span>
+            </Win95Btn>
           </div>
         </div>
 
-        <div
-          className="bg-[#C0C0C0] p-2 overflow-auto"
-          style={{ minHeight: "200px", maxHeight: "400px" }}
-        >
-          {children}
-        </div>
+        {/* Content */}
+        <div style={{ padding: 10 }}>{children}</div>
       </div>
     </Draggable>
   );
 };
 
+interface BtnProps {
+  onClick?: () => void;
+  ariaLabel?: string;
+  size?: number;
+  children: React.ReactNode;
+}
+
+const Win95Btn: React.FC<BtnProps> = ({ onClick, ariaLabel, size = 18, children }) => {
+  return (
+    <button
+      aria-label={ariaLabel}
+      onClick={onClick}
+      style={{
+        width: size,
+        height: size,
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#C0C0C0",
+        border: "2px solid #fff",
+        borderRightColor: "#404040",
+        borderBottomColor: "#404040",
+        padding: 0,
+        margin: 0,
+        outline: "none",
+        cursor: "pointer",
+      }}
+    >
+      {children}
+    </button>
+  );
+};
 
 export default Window;
