@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaInstagram, FaReddit, FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
+import { FaInstagram, FaLinkedin, FaGithub, FaFacebook } from 'react-icons/fa';
 import { MdDescription, MdFolder } from 'react-icons/md';
 
 interface StartMenuProps {
@@ -8,11 +8,10 @@ interface StartMenuProps {
 
 const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
   const menuItems = [
-    { icon: <FaInstagram />, label: 'Instagram', action: () => window.open('https://instagram.com', '_blank') },
-    { icon: <FaReddit />, label: 'Reddit', action: () => window.open('https://reddit.com', '_blank') },
+    { icon: <FaInstagram />, label: 'Instagram', action: () => window.open('https://www.instagram.com/noisy.zoy/', '_blank') },
+    { icon: <FaFacebook />, label: 'Facebook', action: () => window.open('https://www.facebook.com/rasceniza/', '_blank') },
     { icon: <FaLinkedin />, label: 'LinkedIn', action: () => window.open('https://linkedin.com', '_blank') },
-    { icon: <FaTwitter />, label: 'Twitter', action: () => window.open('https://twitter.com', '_blank') },
-    { icon: <FaGithub />, label: 'GitHub', action: () => window.open('https://github.com', '_blank') },
+    { icon: <FaGithub />, label: 'GitHub', action: () => window.open('https://github.com/ruperceniza', '_blank') },
     { divider: true },
     { icon: <MdDescription />, label: 'Résumé', action: () => openWindow('Résumé', <p>My resume </p>) },
     { icon: <MdFolder />, label: 'Projects', action: () => openWindow('Projects', <p>Projects </p>) },
