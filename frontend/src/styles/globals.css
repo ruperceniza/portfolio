@@ -5,6 +5,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --win95-bar-h: 18px;
+  --win95-btn: 14px;
+  --win95-face: #c0c0c0;
+  --win95-face-hover: #bdbdbd;
+  --win95-face-active: #a0a0a0;
+  --win95-light: #ffffff;
+  --win95-dark: #404040;
+  --win95-blue: #000080;
+  --win95-inactive: #7f7f7f;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -80,6 +90,7 @@ body {
   font-size: 12px;
   font-family: "Tahoma", sans-serif;
   cursor: pointer;
+  color: black;
 }
 
 .taskbar-button:hover {
@@ -99,4 +110,99 @@ body {
   border-right: 2px solid #ffffff;
   border-bottom: 2px solid #ffffff;
   background-color: #a0a0a0;
+}
+
+.win95-caption {
+  position: relative;
+  height: var(--win95-bar-h);
+  line-height: var(--win95-bar-h);
+  background: var(--win95-blue);
+  color: #fff;
+  font-family: Tahoma, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  user-select: none;
+  overflow: hidden;
+}
+
+.win95-caption.inactive {
+  background: var(--win95-inactive);
+  color: #dcdcdc;
+}
+
+.win95-caption__buttons {
+  position: absolute;
+  top: calc((var(--win95-bar-h) - var(--win95-btn)) / 2);
+  right: 2px; /* native-looking inset */
+  height: var(--win95-btn);
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.win95-caption-button {
+  width: var(--win95-btn);
+  height: var(--win95-btn);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--win95-face);
+  border: 1px solid var(--win95-light);
+  border-right-color: var(--win95-dark);
+  border-bottom-color: var(--win95-dark);
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.win95-caption-button + .win95-caption-button {
+  margin-left: 0;
+}
+
+.win95-caption-button:hover {
+  background: var(--win95-face-hover);
+}
+
+.win95-caption-button:active {
+  border-top-color: var(--win95-dark);
+  border-left-color: var(--win95-dark);
+  border-right-color: var(--win95-light);
+  border-bottom-color: var(--win95-light);
+  background: var(--win95-face-active);
+}
+
+.win95-caption-button--close {
+  width: calc(var(--win95-btn) + 2px);
+}
+
+.startmenu {
+  min-width: 220px;
+  background: #c0c0c0;
+  border: 1px solid #808080;
+}
+
+.startmenu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  font-size: 13px;
+  cursor: pointer;
+  color: black;
+}
+
+.startmenu-item:hover {
+  background: #000080;
+  color: white;
+}
+
+.startmenu-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
 }

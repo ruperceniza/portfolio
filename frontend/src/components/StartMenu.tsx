@@ -18,23 +18,23 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
   ];
 
   return (
-    <div className="flex bg-[#C0C0C0] border border-gray-600 shadow-lg">
-      <div className="bg-[#808080] text-white font-bold text-xs px-2 py-4 writing-mode-vertical">
+    <div className="startmenu flex">
+      <div className="bg-[#808080] text-grey font-bold text-xs px-2 py-4 writing-mode-vertical">
         Windows95
       </div>
 
-      <ul className="min-w-[200px]">
+      <ul className="flex-1">
         {menuItems.map((item, idx) =>
           item.divider ? (
             <hr key={idx} className="border-t border-gray-500 my-1" />
           ) : (
             <li
               key={idx}
-              className="flex items-center gap-2 px-3 py-1 hover:bg-blue-600 hover:text-white cursor-pointer text-sm"
+              className="startmenu-item"
               onClick={item.action}
             >
-              <span className="text-lg">{item.icon}</span>
-              {item.label}
+              <span className="startmenu-icon">{item.icon}</span>
+              <span>{item.label}</span>
             </li>
           )
         )}
