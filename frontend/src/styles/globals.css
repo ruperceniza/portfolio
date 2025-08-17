@@ -206,3 +206,8 @@ body {
   justify-content: center;
   font-size: 20px;
 }
+
+.win95-font {
+  font-family: "Microsoft Sans Serif", "MS Sans Serif", "Tahoma", "Verdana", sans-serif;
+  letter-spacing: -0.5px;
+}
