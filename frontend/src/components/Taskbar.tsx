@@ -63,7 +63,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
           </button>
 
         {isMenuOpen && (
-          <div ref={menuRef} className="absolute bottom-10 left-0">
+          <div ref={menuRef} className="absolute bottom-full left-0">
             <StartMenu openWindow={openWindow} />
           </div>
         )}
