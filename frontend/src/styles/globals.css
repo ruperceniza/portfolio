@@ -180,7 +180,10 @@ body {
 .startmenu {
   min-width: 220px;
   background: #c0c0c0;
-  border: 1px solid #808080;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
 }
 
 .startmenu-item {
