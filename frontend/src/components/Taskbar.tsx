@@ -51,7 +51,8 @@ const Taskbar: React.FC<TaskbarProps> = ({
   }, []);
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 h-10 bg-[#C0C0C0] border-t border-gray-500 flex items-center justify-between pl-2 pr-6">
+    <div className="absolute bottom-0 left-0 right-0 h-10 bg-[#C0C0C0] flex items-center justify-between shadow-[inset_0_1px_0_#fff,inset_0_-1px_0_#808080]
+    border-t border-[#808080] pl-2 pr-6">
       <div className="flex items-center gap-2 flex-1">
         <div className="relative">
           <button
