@@ -51,13 +51,13 @@ const Taskbar: React.FC<TaskbarProps> = ({
   }, []);
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 h-10 bg-[#C0C0C0] flex items-center justify-between shadow-[inset_0_1px_0_#fff,inset_0_-1px_0_#808080]
+    <div className="absolute bottom-0 left-0 right-0 h-9 bg-[#C0C0C0] flex items-center justify-between shadow-[inset_0_1px_0_#fff,inset_0_-1px_0_#808080]
     border-t border-[#808080] !pl-[6px] pr-6">
       <div className="flex items-center gap-2 flex-1">
         <div className="relative">
           <button
             onClick={toggleMenu}
-            className="flex items-center gap-2 h-7 px-3 bg-[#C0C0C0] border border-gray-500 shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080] hover:brightness-105"
+            className="flex items-center gap-2 h-6 px-3 bg-[#C0C0C0] border border-gray-500 shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080] hover:brightness-105"
           >
             <img src="/icons/start-icon.jpg" alt="Start" className="w-5 h-5" />
             <span className="font-sans text-sm font-bold text-black">Start</span>
