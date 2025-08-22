@@ -214,3 +214,17 @@ body {
   font-family: "Microsoft Sans Serif", "MS Sans Serif", "Tahoma", "Verdana", sans-serif;
   letter-spacing: -0.5px;
 }
+
+.win95-start-button {
+  box-shadow:
+    3px 3px 0 #000,
+    2px 2px 0 #6b6b6b,
+    inset -1px -1px #808080,
+    inset 1px 1px #fff;
+}
+
+.win95-start-button:active {
+  box-shadow:
+    inset 1px 1px #808080,
+    inset -1px -1px #fff;
+}
