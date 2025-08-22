@@ -48,7 +48,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
   ];
 
   return (
-    <div className="startmenu flex h-[280px] w-[165px]">
+    <div className="startmenu flex h-[230px] w-[165px]">
       <div className="bg-[#008080] text-white font-bold text-xs px-2 py-4 writing-mode-vertical win95-font">
         Windows95
       </div>
@@ -64,8 +64,8 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
               onClick={item.action}
             >
               <div className="startmenu-icon">
-                <div className={`w-6 h-6 rounded ${item.bgColor === 'from-purple-500 via-pink-500 to-orange-400' ? 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400' : item.bgColor} flex items-center justify-center text-white`}>
-                  <span className="text-sm">{item.icon}</span>
+                <div className={`w-7 h-7 rounded ${item.bgColor === 'from-purple-500 via-pink-500 to-orange-400' ? 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400' : item.bgColor} flex items-center justify-center text-white`}>
+                  <span className="text-lg">{item.icon}</span>
                 </div>
               </div>
               <span className="truncate">{item.label}</span>
