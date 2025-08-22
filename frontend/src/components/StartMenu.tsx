@@ -17,7 +17,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
     {
       icon: <FaFacebook />,
       label: 'Facebook',
-      action: () => window.open('https://reddit.com', '_blank'),
+      action: () => window.open('https://www.facebook.com/rasceniza/', '_blank'),
       bgColor: 'bg-blue-600'
     },
     {
