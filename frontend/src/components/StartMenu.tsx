@@ -48,7 +48,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
   ];
 
   return (
-    <div className="startmenu flex">
+    <div className="startmenu flex h-[280px] w-[165px]">
       <div className="bg-[#008080] text-white font-bold text-xs px-2 py-4 writing-mode-vertical win95-font">
         Windows95
       </div>
@@ -60,7 +60,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
           ) : (
             <li
               key={idx}
-              className="startmenu-item win95-font"
+              className="startmenu-item win95-font min-w-0"
               onClick={item.action}
             >
               <div className="startmenu-icon">
@@ -68,7 +68,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
                   <span className="text-sm">{item.icon}</span>
                 </div>
               </div>
-              <span>{item.label}</span>
+              <span className="truncate">{item.label}</span>
             </li>
           )
         )}
