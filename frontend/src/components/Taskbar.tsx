@@ -58,12 +58,12 @@ const Taskbar: React.FC<TaskbarProps> = ({
           <button
             onClick={toggleMenu}
             aria-pressed={isMenuOpen}
-            className={`win95-start-button flex items-center justify-start h-6 w-[56px] pl-px pr-1
+            className={`win95-start-button flex items-center justify-start h-6.5 w-[56px] pl-px pr-1
               bg-[#C0C0C0] border border-gray-500 hover:brightness-105
               ${isMenuOpen ? 'win95-start-button--pressed' : ''}`}
           >
             <img src="/icons/start-icon.png" alt="Start" className="w-5 h-5 -translate-x-[8px]" />
-            <span className="win95-font text-sm font-bold text-black leading-none inline-block -translate-x-[1px]">Start</span>
+            <span className="win95-font text-sm font-bold text-black leading-none inline-block -translate-x-[3px]">Start</span>
           </button>
 
         {isMenuOpen && (
