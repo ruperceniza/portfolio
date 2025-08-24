@@ -228,7 +228,11 @@ body {
 
 .startmenu-item:hover {
   background: #000080;
-  color: white;
+  color: fff;
+}
+.startmenu-item:hover .win95-menu-text {
+  color: #fff !important;
+  background: transparent !important;
 }
 
 .startmenu-icon {

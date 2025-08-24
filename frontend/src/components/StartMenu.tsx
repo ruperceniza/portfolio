@@ -61,11 +61,12 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
           ) : (
             <li
               key={idx}
-              className="startmenu-item win95-font min-w-0"
+              className="startmenu-item win95-font min-w-0 w-full"
               onClick={item.action}
             >
               <div className="startmenu-icon">
-                <div className={`w-7 h-7 rounded ${item.bgColor === 'from-purple-500 via-pink-500 to-orange-400' ? 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400' : item.bgColor} flex items-center justify-center text-white`}>
+                <div className={`w-7 h-7 rounded ${item.bgColor === 'from-purple-500 via-pink-500 to-orange-400' ? 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400' : item.bgColor}
+                 flex items-center justify-center text-white`}>
                   <span className="text-lg">{item.icon}</span>
                 </div>
               </div>
