@@ -253,8 +253,9 @@ body {
     inset 1px 1px #fff;
 }
 
-.win95-start-button:active {
+.win95-start-button--pressed {
   box-shadow:
     inset 1px 1px #808080,
     inset -1px -1px #fff;
+  transform: translate(1px, 1px);
 }
