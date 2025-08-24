@@ -10,38 +10,38 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
   const menuItems = [
     {
       icon: <FaInstagram />,
-      label: 'Instagram',
+      label: <span className="win95-menu-text">Instagram</span>,
       action: () => window.open('https://www.instagram.com/noisy.zoy/', '_blank'),
       bgColor: 'from-purple-500 via-pink-500 to-orange-400'
     },
     {
       icon: <FaFacebook />,
-      label: 'Facebook',
+      label: <span className="win95-menu-text">Facebook</span>,
       action: () => window.open('https://www.facebook.com/rasceniza/', '_blank'),
       bgColor: 'bg-blue-600'
     },
     {
       icon: <FaLinkedin />,
-      label: 'LinkedIn',
+      label: <span className="win95-menu-text">LinkedIn</span>,
       action: () => window.open('https://linkedin.com', '_blank'),
       bgColor: 'bg-blue-400'
     },
     {
       icon: <FaGithub />,
-      label: 'GitHub',
+      label: <span className="win95-menu-text">Github</span>,
       action: () => window.open('https://github.com/ruperceniza', '_blank'),
       bgColor: 'bg-gray-800'
     },
     { divider: true },
     {
       icon: <MdFolder />,
-      label: 'Résumé',
+      label: <span className="win95-menu-text">Résumé</span>,
       action: () => openWindow('Résumé', <p>My resume </p>),
       bgColor: 'bg-yellow-400'
     },
     {
       icon: <MdDescription />,
-      label: 'Projects',
+      label: <span className="win95-menu-text">Projects</span>,
       action: () => openWindow('Projects', <p>Projects </p>),
       bgColor: 'bg-green-500'
     },
