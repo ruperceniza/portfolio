@@ -61,7 +61,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
             win95-start-button hover:brightness-105"
           >
             <img src="/icons/start-icon.png" alt="Start" className="w-5 h-5 -translate-x-[8px]" />
-            <span className="font-sans text-sm font-bold text-black leading-none inline-block -translate-x-[4px]">Start</span>
+            <span className="win95-font text-sm font-bold text-black leading-none inline-block -translate-x-[1px]">Start</span>
           </button>
 
         {isMenuOpen && (
