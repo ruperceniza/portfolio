@@ -60,7 +60,13 @@ body {
 
 .writing-mode-vertical {
   writing-mode: vertical-rl;  
-  text-orientation: upright;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  letter-spacing: 4px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 1px 1px 0 #7b7d7b, -1px -1px 0 #7b7d7b;
 }
 
 .taskbar {

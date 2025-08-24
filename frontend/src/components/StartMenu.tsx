@@ -49,8 +49,9 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
 
   return (
     <div className="startmenu flex h-[230px] w-[165px] overflow-y-auto">
-      <div className="bg-[#008080] text-white font-bold text-xs px-2 py-4 writing-mode-vertical win95-font">
-        Windows95
+      <div className="bg-[#7b7d7b] text-[#bdbebd] font-bold text-xs px-2 py-4 writing-mode-vertical win95-font">
+        <span className="text-[#bdbebd]">Windows</span>
+        <span className="text-[#fbfbfb]">95</span>
       </div>
 
       <ul className="flex-1 bg-[#C0C0C0]">
