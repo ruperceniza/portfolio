@@ -45,8 +45,9 @@ const AboutContent: React.FC = () => {
         </div>
 
         <div className="flex flex-wrap gap-2">
-          {skills.map(s => (
-            <span key={s}
+          {skills.map((s) => (
+            <span
+              key={s}
               className="inline-block px-2 py-[2px] text-xs bg-[#ececec]
                          border border-[#808080]
                          shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
@@ -95,28 +96,29 @@ const AboutContent: React.FC = () => {
 
 const ProjectsContent: React.FC = () => {
   const projects = [
-    { 
-      name: "Portfolio", 
-      desc: "Personal portfolio built with TypeScript, featuring a retro Windows 95-inspired UI.", 
-      link: "https://github.com/ruperceniza/Portfolio" 
+    {
+      name: "Portfolio",
+      desc: "Personal portfolio built with TypeScript, featuring a retro Windows 95-inspired UI.",
+      link: "https://github.com/ruperceniza/Portfolio",
     },
-    { 
-      name: "Smart-Surveillance-System", 
-      desc: "2025–2026 capstone project focused on real-time surveillance and intelligent detection.", 
-      link: "https://github.com/ruperceniza/Smart-Surveillance-System" 
+    {
+      name: "Smart-Surveillance-System",
+      desc: "2025–2026 capstone project focused on real-time surveillance and intelligent detection.",
+      link: "https://github.com/ruperceniza/Smart-Surveillance-System",
     },
-    { 
-      name: "ohatravelersystem", 
-      desc: "Public web project built with HTML, emphasizing simplicity and accessibility.", 
-      link: "https://github.com/ruperceniza/ohatravelersystem" 
+    {
+      name: "ohatravelersystem",
+      desc: "Public web project built with HTML, emphasizing simplicity and accessibility.",
+      link: "https://github.com/ruperceniza/ohatravelersystem",
     },
   ];
 
   return (
     <div className="p-4 w-full h-[360px] overflow-y-auto text-sm pr-2 box-border">
       <div className="mx-auto max-w-[560px] space-y-3">
-        {projects.map(p => (
-          <div key={p.name}
+        {projects.map((p) => (
+          <div
+            key={p.name}
             className="p-3 bg-[#d6d6d6] border border-[#808080]
                        shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
             <div className="font-bold">{p.name}</div>
@@ -181,17 +183,25 @@ const Desktop: React.FC = () => {
       className="h-screen w-screen font-win95 relative bg-cover bg-center"
       style={{ backgroundImage: "url('/icons/wallpaper.jpg')" }}
     >
-      <div className="p-4 grid grid-cols-2 gap-4">
-        <Icon
-          label="About Me"
-          img="/mycomputer.png"
-          onClick={() => openWindow("About Me", <AboutContent />)}
-        />
-        <Icon
-          label="Projects"
-          img="/folder.png"
-          onClick={() => openWindow("Projects", <ProjectsContent />)}
-        />
+      <div className="flex">
+        <div className="w-4 shrink-0" />
+        <div className="pl-3 pt-6 flex flex-col gap-6 items-start">
+          <div className="h shrink-0" />
+          <Icon
+            label="About Me"
+            img="mycomputer.png"
+            size={64}
+            labelSizeClass="text-sm"
+            onClick={() => openWindow("About Me", <AboutContent />)}
+          />
+          <Icon
+            label="Projects"
+            img="folder.png"
+            size={64}
+            labelSizeClass="text-sm"
+            onClick={() => openWindow("Projects", <ProjectsContent />)}
+          />
+        </div>
       </div>
 
       {windows.map(
