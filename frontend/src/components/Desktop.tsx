@@ -23,16 +23,6 @@ const Badge: React.FC<{ text: string }> = ({ text }) => (
 );
 
 const AboutContent: React.FC = () => {
-  const skills = [
-    "Swift","Python","Javascript","SQL","Git","HTML/CSS",
-    "SwiftUI","React Native","VueJS","Flask","MongoDB","SQLite","Figma",
-  ];
-
-  const BADGE_BASE =
-    "inline-flex items-center px-3 py-1 rounded-[6px] text-[px] \
-     font-sans font-medium border border-black/20 \
-     shadow-[inset_0_1px_rgba(255,255,255,0.6)]";
-
   const badges = [
     { label: "React", color: "61dafb" },
     { label: "Next.js", color: "000000" },
