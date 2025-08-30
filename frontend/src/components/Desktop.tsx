@@ -24,20 +24,20 @@ const Badge: React.FC<{ text: string }> = ({ text }) => (
 
 const AboutContent: React.FC = () => {
   const badges = [
-    { label: "React", color: "61dafb" },
-    { label: "Next.js", color: "000000" },
-    { label: "TypeScript", color: "3178c6" },
-    { label: "JavaScript", color: "f7df1e" },
-    { label: "HTML", color: "e34f26" },
-    { label: "CSS", color: "1572b6" },
-    { label: "TailwindCSS", color: "06b6d4" },
-    { label: "Flutter", color: "02569b" },
-    { label: "Node.js", color: "339933" },
-    { label: "Python", color: "336791" },
-    { label: "Django", color: "092e20" },
-    { label: "PostgreSQL", color: "336791" },
-    { label: "Firebase", color: "ffca28" },
-    { label: "Git", color: "f05032" },
+    { label: "React", color: "61dafb", logo: "react", textColor: "000000" },
+    { label: "Next.js", color: "000000", logo: "nextdotjs", textColor: "ffffff" },
+    { label: "TypeScript", color: "3178c6", logo: "typescript", textColor: "ffffff" },
+    { label: "JavaScript", color: "f7df1e", logo: "javascript", textColor: "000000" },
+    { label: "HTML5", color: "e34f26", logo: "html5", textColor: "ffffff" },
+    { label: "CSS3", color: "1572b6", logo: "css", textColor: "ffffff" },
+    { label: "TailwindCSS", color: "06b6d4", logo: "tailwindcss", textColor: "ffffff" },
+    { label: "Flutter", color: "02569b", logo: "flutter", textColor: "ffffff" },
+    { label: "Node.js", color: "339933", logo: "nodedotjs", textColor: "ffffff" },
+    { label: "Python", color: "3776ab", logo: "python", textColor: "ffffff" },
+    { label: "Django", color: "092e20", logo: "django", textColor: "ffffff" },
+    { label: "PostgreSQL", color: "336791", logo: "postgresql", textColor: "ffffff" },
+    { label: "Firebase", color: "ffca28", logo: "firebase", textColor: "000000" },
+    { label: "Git", color: "f05032", logo: "git", textColor: "ffffff" },
   ];
 
   return (
@@ -60,7 +60,7 @@ const AboutContent: React.FC = () => {
             {badges.map((b) => (
               <img
                 key={b.label}
-                src={`https://img.shields.io/badge/${encodeURIComponent(b.label)}-${b.color}`}
+                src={`https://img.shields.io/badge/${encodeURIComponent(b.label)}-${b.color}?logo=${b.logo}&logoColor=${b.textColor}`}
                 alt={b.label}
                 className="h-5"
               />
