@@ -24,36 +24,58 @@ const Badge: React.FC<{ text: string }> = ({ text }) => (
 
 const AboutContent: React.FC = () => {
   const skills = [
-    "React","TypeScript","TailwindCSS","Node.js", "JavaScript", "HTML", "CSS", "Next.js",
-    "Python","Django","Flutter","Firebase", "PostgreSQL", "Git",
+    "Swift","Python","Javascript","SQL","Git","HTML/CSS",
+    "SwiftUI","React Native","VueJS","Flask","MongoDB","SQLite","Figma",
+  ];
+
+  const BADGE_BASE =
+    "inline-flex items-center px-3 py-1 rounded-[6px] text-[px] \
+     font-sans font-medium border border-black/20 \
+     shadow-[inset_0_1px_rgba(255,255,255,0.6)]";
+
+  const badges = [
+    { label: "React", color: "61dafb" },
+    { label: "Next.js", color: "000000" },
+    { label: "TypeScript", color: "3178c6" },
+    { label: "JavaScript", color: "f7df1e" },
+    { label: "HTML", color: "e34f26" },
+    { label: "CSS", color: "1572b6" },
+    { label: "TailwindCSS", color: "06b6d4" },
+    { label: "Flutter", color: "02569b" },
+    { label: "Node.js", color: "339933" },
+    { label: "Python", color: "336791" },
+    { label: "Django", color: "092e20" },
+    { label: "PostgreSQL", color: "336791" },
+    { label: "Firebase", color: "ffca28" },
+    { label: "Git", color: "f05032" },
   ];
 
   return (
-    <div className="p-4 w-full h-[420px] overflow-y-auto text-[13px] text-black leading-[1.45] pr-2 break-words box-border">
-      <div className="mx-auto max-w-[560px] space-y-6">
-        <div className="space-y-2">
+    <div className="p-6 w-full h-[600px] overflow-y-auto text-[13px] text-black leading-[1.6] pr-2 box-border bg-[#c0c0c0]">
+      <div className="mx-auto max-w-[720px] space-y-8">
+        <div className="space-y-3">
           <img
             src="/photos/me.jpg"
             alt="Ruper"
-            className="block w-full max-w-[520px] h-auto mx-auto
+            className="block w-full h-auto mx-auto
                        border border-[#808080]
                        shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]"
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
-          <h1 className="font-bold text-xl">Ruper Art Ceniza</h1>
-          <p className="text-[#333]">Software Developer</p>
-        </div>
+          <h1 className="font-bold text-[22px] mt-4">Ruper Art Ceniza</h1>
+          <p className="text-[#333] -mt-1">Software Developer</p>
+          <p className="text-[12px] text-[#444]">Philippines 📍</p>
 
-        <div className="flex flex-wrap gap-2">
-          {skills.map((s) => (
-            <span
-              key={s}
-              className="inline-block px-2 py-[2px] text-xs bg-[#ececec]
-                         border border-[#808080]
-                         shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
-              {s}
-            </span>
-          ))}
+          <div className="flex flex-wrap gap-2 pt-2">
+            {badges.map((b) => (
+              <img
+                key={b.label}
+                src={`https://img.shields.io/badge/${encodeURIComponent(b.label)}-${b.color}`}
+                alt={b.label}
+                className="h-5"
+              />
+            ))}
+          </div>
         </div>
 
         <section className="space-y-2">
@@ -70,22 +92,35 @@ const AboutContent: React.FC = () => {
           <h2 className="font-bold underline">Employment / Experience</h2>
           <div>
             <h3 className="font-bold">Freelance Developer (2022–Present)</h3>
-            <p className="text-[#444]">
-              Built websites and small apps; focused on UX, performance, and clean component design.
+            <p className="text-[#444] text-[12px] mb-1">Core Team, Lead Engineer</p>
+            <p>
+              Built websites and small apps; emphasized accessibility, performance, and maintainable UI systems.
+            </p>
+          </div>
+          <div>
+            <h3 className="font-bold">Smart-Surveillance-System (Capstone, 2025–2026)</h3>
+            <p className="text-[#444] text-[12px] mb-1">Real-time vision pipeline</p>
+            <p>
+              Prototyped a home surveillance system using YOLOv8 pose/face + Python with a modular alerting workflow.
             </p>
           </div>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-bold underline">Projects & Achievements</h2>
-          <ul className="list-disc pl-5 space-y-1">
-            <li>Portfolio - Personal portfolio built with TypeScript, featuring a retro Windows 95-inspired UI.</li>
-            <li>Smart-Surveillance-System - 2025-2026 capstone project focused on real-time surveillance and intelligent detection.</li>
-            <li>ohatravelersystem - Public web project built with HTML, emphasizing simplicity and accessibility.</li>
-          </ul>
+          <div>
+            <h3 className="font-bold">Portfolio</h3>
+            <p className="text-[#444] text-[12px] mb-1">TypeScript • Next.js</p>
+            <p>Retro Windows-95 inspired UI with draggable windows and a taskbar.</p>
+          </div>
+          <div>
+            <h3 className="font-bold">OHA Traveler’s System</h3>
+            <p className="text-[#444] text-[12px] mb-1">Django • PostgreSQL</p>
+            <p>PMS + booking + inventory workflows with clean data models and admin tooling.</p>
+          </div>
         </section>
 
-        <section className="space-y-2">
+        <section className="space-y-2 pb-2">
           <h2 className="font-bold underline">Résumé</h2>
           <a href="/resume.pdf" className="text-red-600 underline">View my résumé</a>
         </section>
@@ -194,7 +229,7 @@ const Desktop: React.FC = () => {
             onClick={() => openWindow("About Me", <AboutContent />)}
           />
           <Icon
-            label="Projects"
+            label="Résumé"
             img="folder.png"
             size={64}
             labelSizeClass="text-sm"
