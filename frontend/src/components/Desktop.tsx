@@ -185,8 +185,7 @@ const Desktop: React.FC = () => {
     >
       <div className="flex">
         <div className="w-4 shrink-0" />
-        <div className="pl-3 pt-6 flex flex-col gap-6 items-start">
-          <div className="h shrink-0" />
+        <div className="absolute top-4 left-4 flex flex-col gap-6 items-start">
           <Icon
             label="About Me"
             img="mycomputer.png"
