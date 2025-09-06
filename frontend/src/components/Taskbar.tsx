@@ -5,7 +5,7 @@ import { WindowData } from "@/components/Desktop";
 
 interface TaskbarProps {
   windows: WindowData[];
-  openWindow: (title: string, content: React.ReactNode) => void;
+  openWindow: (title: string, content: React.ReactNode, icon?: string) => void;
   toggleMinimize: (id: number) => void;
   setActiveWindowId: (id: number | null) => void;
   activeWindowId: number | null;
@@ -101,7 +101,11 @@ const Taskbar: React.FC<TaskbarProps> = ({
                   win.minimized ? "navbar-item--minimized" : "",
                 ].join(" ")}
               >
-                <img src="/icons/window-16.png" alt="" className="w-3.5 h-3.5" />
+                <img
+                  src={`/icons/${win.icon || 'folder.png'}`}
+                  alt=""
+                  className="w-4 h-4"
+                />
                 <span className="win95-font leading-none">{win.title}</span>
               </button>
             );

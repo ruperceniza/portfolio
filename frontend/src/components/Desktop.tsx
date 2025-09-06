@@ -9,7 +9,8 @@ export interface WindowData {
   title: string;
   content: ReactNode;
   minimized?: boolean;
-  zIndex: number; 
+  zIndex: number;
+  icon?: string;
 }
 
 const Badge: React.FC<{ text: string }> = ({ text }) => (
@@ -179,14 +180,14 @@ const Desktop: React.FC = () => {
     setActiveWindowId(id);
   };
 
-  const openWindow = (title: string, content: ReactNode) => {
+  const openWindow = (title: string, content: ReactNode, icon?: string) => {
     const id = Date.now();
     const newZIndex = highestZIndex + 1;
     setHighestZIndex(newZIndex);
 
     setWindows((prev) => [
       ...prev,
-      { id, title, content, minimized: false, zIndex: newZIndex },
+      { id, title, content, minimized: false, zIndex: newZIndex, icon },
     ]);
     setActiveWindowId(id);
   };
@@ -216,14 +217,14 @@ const Desktop: React.FC = () => {
             img="mycomputer.png"
             size={64}
             labelSizeClass="text-sm"
-            onClick={() => openWindow("About Me", <AboutContent />)}
+            onClick={() => openWindow("About Me", <AboutContent />, "mycomputer.png")}
           />
           <Icon
             label="Résumé"
             img="folder.png"
             size={64}
             labelSizeClass="text-sm"
-            onClick={() => openWindow("Projects", <ProjectsContent />)}
+            onClick={() => openWindow("Projects", <ProjectsContent />, "folder.png")}
           />
         </div>
       </div>

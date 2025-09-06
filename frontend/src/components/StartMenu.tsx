@@ -3,7 +3,7 @@ import { FaInstagram, FaLinkedin, FaGithub, FaFacebook } from 'react-icons/fa';
 import { MdDescription, MdFolder } from 'react-icons/md';
 
 interface StartMenuProps {
-  openWindow: (title: string, content: React.ReactNode) => void;
+  openWindow: (title: string, content: React.ReactNode, icon?: string) => void;
 }
 
 const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
@@ -36,13 +36,13 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
     {
       icon: <MdFolder />,
       label: <span className="win95-menu-text">Résumé</span>,
-      action: () => openWindow('Résumé', <p>My resume </p>),
+      action: () => openWindow('Résumé', <p>My resume </p>, 'folder.png'),
       bgColor: 'bg-yellow-400'
     },
     {
       icon: <MdDescription />,
       label: <span className="win95-menu-text">Projects</span>,
-      action: () => openWindow('Projects', <p>Projects </p>),
+      action: () => openWindow('Projects', <p>Projects </p>, 'mycomputer.png'),
       bgColor: 'bg-green-500'
     },
   ];
