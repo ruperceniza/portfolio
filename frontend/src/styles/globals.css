@@ -280,6 +280,7 @@ body {
   min-width: 80px;
   max-width: 160px;
   font-family: "MS Sans Serif", sans-serif;
+  color: black;
 }
 
 .navbar-item:hover {
