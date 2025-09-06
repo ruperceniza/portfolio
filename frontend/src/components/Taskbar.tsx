@@ -104,7 +104,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
                 <img
                   src={`/icons/${win.icon || 'folder.png'}`}
                   alt=""
-                  className="w-4 h-4"
+                  className="w-7 h-7"
                 />
                 <span className="win95-font leading-none">{win.title}</span>
               </button>
