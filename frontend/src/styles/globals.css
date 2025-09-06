@@ -266,10 +266,8 @@ body {
 
 .navbar-item {
   background: #c0c0c0;
-  box-shadow:
-    inset -1px -1px #ffffff,
-    inset  1px  1px #808080;
-  border: 0;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
   outline: 0;
   height: 24px;
   padding: 2px 8px;
@@ -291,9 +289,13 @@ body {
 }
 
 .navbar-item--pressed {
-  box-shadow:
-    inset  1px  1px #ffffff,
-    inset -1px -1px #404040;
+  border-color: #808080 #ffffff #ffffff #808080;
+  background: #c0c0c0;
+}
+
+.navbar-item--inactive {
+  border-color: #ffffff #808080 #808080 #ffffff;
+  background: #c0c0c0;
 }
 
 .navbar-item--minimized {

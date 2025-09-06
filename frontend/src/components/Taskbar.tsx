@@ -97,7 +97,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
                 title={win.title}
                 className={[
                   "navbar-item",
-                  isActive ? "navbar-item--pressed" : "",
+                  isActive ? "navbar-item--pressed" : "navbar-item--inactive",
                   win.minimized ? "navbar-item--minimized" : "",
                 ].join(" ")}
               >
