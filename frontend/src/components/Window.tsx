@@ -27,8 +27,8 @@ const Window: React.FC<WindowProps> = ({
   const nodeRef = useRef<HTMLDivElement>(null);
 
   const BAR = 22;
-  const BTN = 18;
-  const CLOSE_BTN = 20;
+  const BTN = 11;
+  const CLOSE_BTN = 11;
 
   return (
     <Draggable handle=".window-titlebar" nodeRef={nodeRef}>
@@ -70,29 +70,30 @@ const Window: React.FC<WindowProps> = ({
           )}
           {title}
 
-          <div
-            style={{
-              position: "absolute",
-              right: 2,
-              top: Math.floor((BAR - BTN) / 2),
-              height: BTN,
-              display: "flex",
-              alignItems: "center",
-            }}
-          >
-            <Win95Btn size={BTN} onClick={onMinimize} ariaLabel="Minimize">
-              <div style={{ width: 8, height: 2, background: "#000" }} />
-            </Win95Btn>
+          <div className="win95-caption__buttons">
+            <button 
+              className="minimize-button button"
+              onClick={onMinimize} 
+              aria-label="Minimize"
+            >
+              <span>_</span>
+            </button>
 
-            <Win95Btn size={BTN} onClick={onMaximize} ariaLabel="Maximize">
-              <div style={{ width: 10, height: 8, border: "1px solid #000" }} />
-            </Win95Btn>
+            <button 
+              className="expand-button button"
+              onClick={onMaximize} 
+              aria-label="Maximize"
+            >
+              <span>□</span>
+            </button>
 
-            <Win95Btn size={CLOSE_BTN} onClick={onClose} ariaLabel="Close">
-              <span style={{ color: "#000", fontWeight: 700, fontSize: 12 }}>
-                ×
-              </span>
-            </Win95Btn>
+            <button 
+              className="close-button button"
+              onClick={onClose} 
+              aria-label="Close"
+            >
+              <span>×</span>
+            </button>
           </div>
         </div>
 
