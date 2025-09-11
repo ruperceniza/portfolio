@@ -228,7 +228,7 @@ const Desktop: React.FC = () => {
           />
           <Icon
             label="Mail"
-            img="folder.png"
+            img="mail.png"
             size={64}
             labelSizeClass="text-sm"
             onClick={() => window.location.href = 'mailto:your-email@example.com'}
