@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 
 interface WindowProps {
@@ -25,25 +25,68 @@ const Window: React.FC<WindowProps> = ({
   children,
 }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
+  const [isMaximized, setIsMaximized] = useState(false);
+  const [originalDimensions, setOriginalDimensions] = useState({
+    width: 500,
+    height: 400,
+    top: 100,
+    left: 100,
+  });
+
+  const handleToggleMaximize = () => {
+    if (!isMaximized) {
+      if (nodeRef.current) {
+        const rect = nodeRef.current.getBoundingClientRect();
+        const currentTop = parseInt(nodeRef.current.style.top) || 100;
+        const currentLeft = parseInt(nodeRef.current.style.left) || 100;
+        
+        const safeTop = Math.max(0, Math.min(currentTop, window.innerHeight - 100));
+        const safeLeft = Math.max(0, Math.min(currentLeft, window.innerWidth - 200));
+        
+        setOriginalDimensions({
+          width: rect.width,
+          height: rect.height,
+          top: safeTop,
+          left: safeLeft,
+        });
+      }
+    }
+    setIsMaximized(!isMaximized);
+    
+    if (onMaximize) {
+      onMaximize();
+    }
+  };
 
   const BAR = 22;
   const BTN = 11;
   const CLOSE_BTN = 11;
 
   return (
-    <Draggable handle=".window-titlebar" nodeRef={nodeRef}>
+    <Draggable 
+      handle=".window-titlebar" 
+      nodeRef={nodeRef} 
+      disabled={isMaximized}
+      bounds={{
+        left: -400,
+        top: 0,
+        right: window.innerWidth - 100,
+        bottom: window.innerHeight - 50
+      }}
+    >
       <div
         ref={nodeRef}
         onMouseDown={onFocus}
         style={{
           zIndex,
-          width: 500,
+          width: isMaximized ? 'calc(100vw - 4px)' : originalDimensions.width,
+          height: isMaximized ? 'calc(100vh - 40px)' : originalDimensions.height,
           background: "#C0C0C0",
           border: "2px solid #000",
           boxShadow: "2px 2px #000",
           position: "absolute",
-          top: 100,
-          left: 100,
+          top: isMaximized ? 0 : originalDimensions.top,
+          left: isMaximized ? 0 : originalDimensions.left,
         }}
       >
         <div
@@ -81,10 +124,10 @@ const Window: React.FC<WindowProps> = ({
 
             <button 
               className="expand-button button"
-              onClick={onMaximize} 
-              aria-label="Maximize"
+              onClick={handleToggleMaximize} 
+              aria-label={isMaximized ? "Restore" : "Maximize"}
             >
-              <span>□</span>
+              <span>{isMaximized ? '❐' : '□'}</span>
             </button>
 
             <button 
@@ -97,7 +140,6 @@ const Window: React.FC<WindowProps> = ({
           </div>
         </div>
 
-        {/* Content */}
         <div style={{ padding: 10 }}>{children}</div>
       </div>
     </Draggable>
