@@ -27,10 +27,10 @@ const Window: React.FC<WindowProps> = ({
   const nodeRef = useRef<HTMLDivElement>(null);
   const [isMaximized, setIsMaximized] = useState(false);
   const [originalDimensions, setOriginalDimensions] = useState({
-    width: 500,
-    height: 400,
-    top: 100,
-    left: 100,
+    width: 700,
+    height: 550,
+    top: 50,
+    left: 50,
   });
 
   const handleToggleMaximize = () => {
@@ -140,7 +140,16 @@ const Window: React.FC<WindowProps> = ({
           </div>
         </div>
 
-        <div style={{ padding: 10 }}>{children}</div>
+        <div style={{ 
+          padding: 10, 
+          overflow: 'auto',
+          height: `calc(100% - ${BAR}px)`,
+          boxSizing: 'border-box',
+          wordWrap: 'break-word',
+          overflowWrap: 'break-word'
+        }}>
+          {children}
+        </div>
       </div>
     </Draggable>
   );

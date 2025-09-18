@@ -42,8 +42,8 @@ const AboutContent: React.FC = () => {
   ];
 
   return (
-    <div className="p-6 w-full h-[600px] overflow-y-auto text-[13px] text-black leading-[1.6] pr-2 box-border bg-[#c0c0c0]">
-      <div className="mx-auto max-w-[720px] space-y-8">
+    <div className="p-6 w-full text-[13px] text-black leading-[1.6] pr-2 box-border bg-[#c0c0c0]">
+      <div className="mx-auto max-w-full space-y-8">
         <div className="space-y-3">
           <img
             src="/photos/me.jpg"
@@ -140,8 +140,8 @@ const ProjectsContent: React.FC = () => {
   ];
 
   return (
-    <div className="p-4 w-full h-[360px] overflow-y-auto text-sm pr-2 box-border">
-      <div className="mx-auto max-w-[560px] space-y-3">
+    <div className="p-4 w-full text-sm pr-2 box-border">
+      <div className="mx-auto max-w-full space-y-3">
         {projects.map((p) => (
           <div
             key={p.name}
