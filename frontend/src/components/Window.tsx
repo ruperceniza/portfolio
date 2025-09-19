@@ -108,7 +108,7 @@ const Window: React.FC<WindowProps> = ({
             <img
               src={iconSrc}
               alt=""
-              style={{ width: 16, height: 16, marginRight: 4 }}
+              style={{ width: 30, height: 30 }}
             />
           )}
           {title}

@@ -362,6 +362,7 @@ const Desktop: React.FC = () => {
             <Window
               key={win.id}
               title={win.title}
+              iconSrc={win.icon ? `/icons/${win.icon}` : undefined}
               onClose={() => closeWindow(win.id)}
               onMinimize={() => toggleMinimize(win.id)}
               onFocus={() => bringToFront(win.id)}
