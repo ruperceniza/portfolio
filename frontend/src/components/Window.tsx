@@ -26,6 +26,7 @@ const Window: React.FC<WindowProps> = ({
 }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const [isMaximized, setIsMaximized] = useState(false);
+  const [draggableKey, setDraggableKey] = useState(0);
   const [originalDimensions, setOriginalDimensions] = useState({
     width: 700,
     height: 550,
@@ -37,11 +38,23 @@ const Window: React.FC<WindowProps> = ({
     if (!isMaximized) {
       if (nodeRef.current) {
         const rect = nodeRef.current.getBoundingClientRect();
-        const currentTop = parseInt(nodeRef.current.style.top) || 100;
-        const currentLeft = parseInt(nodeRef.current.style.left) || 100;
+        const computedStyle = window.getComputedStyle(nodeRef.current);
+        const transform = computedStyle.transform;
         
-        const safeTop = Math.max(0, Math.min(currentTop, window.innerHeight - 100));
-        const safeLeft = Math.max(0, Math.min(currentLeft, window.innerWidth - 200));
+        let currentTop = originalDimensions.top;
+        let currentLeft = originalDimensions.left;
+        
+        if (transform && transform !== 'none') {
+          const matrix = transform.match(/matrix\(([^)]+)\)/);
+          if (matrix) {
+            const values = matrix[1].split(', ');
+            currentLeft = parseFloat(values[4]) || currentLeft;
+            currentTop = parseFloat(values[5]) || currentTop;
+          }
+        }
+        
+        const safeTop = Math.max(0, Math.min(currentTop, window.innerHeight - 200));
+        const safeLeft = Math.max(0, Math.min(currentLeft, window.innerWidth - 300));
         
         setOriginalDimensions({
           width: rect.width,
@@ -51,7 +64,9 @@ const Window: React.FC<WindowProps> = ({
         });
       }
     }
+    
     setIsMaximized(!isMaximized);
+    setDraggableKey(prev => prev + 1);
     
     if (onMaximize) {
       onMaximize();
@@ -64,9 +79,11 @@ const Window: React.FC<WindowProps> = ({
 
   return (
     <Draggable 
+      key={draggableKey}
       handle=".window-titlebar" 
       nodeRef={nodeRef} 
       disabled={isMaximized}
+      defaultPosition={isMaximized ? { x: 0, y: 0 } : { x: 0, y: 0 }}
       bounds={{
         left: -400,
         top: 0,
@@ -79,14 +96,15 @@ const Window: React.FC<WindowProps> = ({
         onMouseDown={onFocus}
         style={{
           zIndex,
-          width: isMaximized ? 'calc(100vw - 4px)' : originalDimensions.width,
+          width: isMaximized ? '100vw' : originalDimensions.width,
           height: isMaximized ? 'calc(100vh - 40px)' : originalDimensions.height,
           background: "#C0C0C0",
           border: "2px solid #000",
           boxShadow: "2px 2px #000",
-          position: "absolute",
-          top: isMaximized ? 0 : originalDimensions.top,
-          left: isMaximized ? 0 : originalDimensions.left,
+          position: isMaximized ? "fixed" : "absolute",
+          top: isMaximized ? '0px' : originalDimensions.top,
+          left: isMaximized ? '0px' : originalDimensions.left,
+          transform: isMaximized ? 'none !important' : undefined,
         }}
       >
         <div
