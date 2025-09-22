@@ -6,6 +6,8 @@ interface IconProps {
   onClick?: () => void;
   size?: number;             
   labelSizeClass?: string;
+  imageRendering?: "auto" | "pixelated" | "crisp-edges";
+  aspectRatio?: string;
 }
 
 const Icon: React.FC<IconProps> = ({
@@ -13,7 +15,9 @@ const Icon: React.FC<IconProps> = ({
   img,
   onClick,
   size = 48,
-  labelSizeClass = "text-xs"
+  labelSizeClass = "text-xs",
+  imageRendering = "pixelated",
+  aspectRatio = "1/1"
 }) => {
   return (
     <div
@@ -27,7 +31,9 @@ const Icon: React.FC<IconProps> = ({
         style={{
           width: size,
           height: size,
-          imageRendering: "pixelated",
+          imageRendering: imageRendering,
+          aspectRatio: aspectRatio,
+          objectFit: "contain",
         }}
       />
       <span
