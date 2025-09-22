@@ -130,7 +130,7 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
     {
       icon: <MdFolder />,
       label: <span className="win95-menu-text">Résumé</span>,
-      action: () => openWindow('Résumé', createResumeContent(), 'folder.png'),
+      action: () => window.open('/resume.pdf', '_blank'),
       bgColor: 'bg-yellow-400'
     },
     {
