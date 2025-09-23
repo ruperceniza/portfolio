@@ -168,49 +168,69 @@ const ProjectsContent: React.FC = () => {
 
 const ResumeContent: React.FC = () => {
   return (
-    <div className="p-4 w-full text-sm pr-2 box-border bg-[#c0c0c0]">
-      <div className="mx-auto max-w-full space-y-4">
-        <div className="text-center space-y-2">
-          <h2 className="text-lg font-bold">Ruper Art Ceniza</h2>
-          <p className="text-sm">Software Developer</p>
-          <p className="text-xs text-[#444]">Philippines 📍</p>
-        </div>
-        
-        <div className="p-3 bg-[#d6d6d6] border border-[#808080] shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
-          <h3 className="font-bold mb-2">Download Resume</h3>
-          <p className="text-xs mb-3">Click below to view or download my resume:</p>
+    <div className="w-full h-full flex flex-col bg-[#c0c0c0] overflow-hidden">
+      <div className="bg-[#c0c0c0] p-1">
+        <div className="flex gap-1 border-b border-[#808080] pb-1">
           <a 
             href="/resume.pdf" 
-            className="inline-block px-3 py-1 bg-[#c0c0c0] border border-[#808080] text-xs hover:bg-[#dfdfdf] text-black no-underline"
+            download
+            className="h-7 flex items-center bg-[#c0c0c0] text-[12px] text-black no-underline whitespace-nowrap font-win95"
             style={{ 
-              borderTopColor: '#ffffff',
-              borderLeftColor: '#ffffff',
+              border: '2px solid',
+              borderTopColor: 'white',
+              borderLeftColor: 'white',
               borderRightColor: '#404040',
-              borderBottomColor: '#404040'
+              borderBottomColor: '#404040',
+              boxShadow: 'inset -1px -1px #808080, inset 1px 1px #ffffff',
+              fontFamily: "'W95FA', sans-serif",
+              paddingLeft: '8px',
+              paddingRight: '8px',
+              minWidth: '70px',
+              justifyContent: 'center',
+              color: '#000000'
             }}
+          >
+            Download
+          </a>
+          <a 
+            href="/resume.pdf" 
             target="_blank"
             rel="noopener noreferrer"
+            className="h-7 flex items-center bg-[#c0c0c0] text-[12px] text-black no-underline whitespace-nowrap font-win95"
+            style={{ 
+              border: '2px solid',
+              borderTopColor: 'white',
+              borderLeftColor: 'white',
+              borderRightColor: '#404040',
+              borderBottomColor: '#404040',
+              boxShadow: 'inset -1px -1px #808080, inset 1px 1px #ffffff',
+              fontFamily: "'W95FA', sans-serif",
+              paddingLeft: '8px',
+              paddingRight: '8px',
+              minWidth: '110px',
+              justifyContent: 'center',
+              color: '#000000'
+            }}
           >
-            View Resume (PDF)
+            Open in New Tab
           </a>
         </div>
-
-        <div className="p-3 bg-[#d6d6d6] border border-[#808080] shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
-          <h3 className="font-bold mb-2">Quick Summary</h3>
-          <p className="text-xs leading-relaxed">
-            Currently a student while completing capstone project 
-            on smart surveillance systems.
-          </p>
-        </div>
-
-        <div className="p-3 bg-[#d6d6d6] border border-[#808080] shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
-          <h3 className="font-bold mb-2">Contact Information</h3>
-          <div className="text-xs space-y-1">
-            <p>Email: cenizaruper13@gmail.com</p>
-            <p>LinkedIn: linkedin.com/in/ruperceniza</p>
-            <p>GitHub: github.com/ruperceniza</p>
-          </div>
-        </div>
+      </div>
+      
+      <div className="h-1 bg-[#c0c0c0]"></div>
+      
+      <div className="flex-1 bg-black w-full overflow-hidden">
+        <iframe 
+          src="/resume.pdf" 
+          className="w-full h-full border-none"
+          style={{ backgroundColor: 'black' }}
+          title="Resume PDF Viewer"
+        />
+      </div>
+      
+      <div className="bg-[#c0c0c0] h-5 border-t border-[#808080] px-2 text-xs flex justify-between items-center text-black">
+        <div>Page 1</div>
+        <div>100%</div>
       </div>
     </div>
   );
