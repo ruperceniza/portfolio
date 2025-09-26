@@ -54,8 +54,8 @@ const AboutContent: React.FC = () => {
             onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
           />
           <h1 className="font-bold text-[22px] mt-4">Ruper Art Ceniza</h1>
-          <p className="text-[#333] -mt-1">Software Developer</p>
-          <p className="text-[12px] text-[#444]">Philippines 📍</p>
+          <p className="text-[#333] -mt-1">Dev Role</p>
+          <p className="text-[12px] text-[#444]">Location 📍</p>
 
           <div className="flex flex-wrap gap-2 pt-2">
             {badges.map((b) => (
@@ -72,27 +72,30 @@ const AboutContent: React.FC = () => {
         <section className="space-y-2">
           <h2 className="font-bold underline">About Me</h2>
           <p>
-            I am a developer passionate about building user-friendly and scalable applications.
-            I enjoy combining creativity with problem-solving, focusing on writing clean, maintainable code and designing seamless user experiences.
-            I stay curious about emerging technologies and best practices, continuously refining my skills to adapt to the ever-evolving tech landscape.
-            My approach balances technical precision with adaptability, allowing me to contribute effectively to both individual and collaborative projects.
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen
+            book. It has survived not only five centuries, but also the leap into electronic
+            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+            sheets containing Lorem Ipsum passages, and more recently with desktop
+            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
           </p>
         </section>
 
         <section className="space-y-2">
           <h2 className="font-bold underline">Employment / Experience</h2>
           <div>
-            <h3 className="font-bold">Freelance Developer (2022–Present)</h3>
-            <p className="text-[#444] text-[12px] mb-1">Core Team, Lead Engineer</p>
+            <h3 className="font-bold">Role</h3>
+            <p className="text-[#444] text-[12px] mb-1">Position</p>
             <p>
-              Built websites and small apps; emphasized accessibility, performance, and maintainable UI systems.
+              Description
             </p>
           </div>
           <div>
-            <h3 className="font-bold">Smart-Surveillance-System (Capstone, 2025–2026)</h3>
-            <p className="text-[#444] text-[12px] mb-1">Real-time vision pipeline</p>
+            <h3 className="font-bold">Project 1</h3>
+            <p className="text-[#444] text-[12px] mb-1">Short Description</p>
             <p>
-              Prototyped a home surveillance system using YOLOv8 pose/face + Python with a modular alerting workflow.
+              Description
             </p>
           </div>
         </section>
@@ -100,14 +103,14 @@ const AboutContent: React.FC = () => {
         <section className="space-y-2">
           <h2 className="font-bold underline">Projects & Achievements</h2>
           <div>
-            <h3 className="font-bold">Portfolio</h3>
-            <p className="text-[#444] text-[12px] mb-1">TypeScript • Next.js</p>
-            <p>Retro Windows-95 inspired UI with draggable windows and a taskbar.</p>
+            <h3 className="font-bold">Project 2</h3>
+            <p className="text-[#444] text-[12px] mb-1">Tech Stack</p>
+            <p>Description</p>
           </div>
           <div>
-            <h3 className="font-bold">OHA Traveler’s System</h3>
-            <p className="text-[#444] text-[12px] mb-1">Django • PostgreSQL</p>
-            <p>PMS + booking + inventory workflows with clean data models and admin tooling.</p>
+            <h3 className="font-bold">Project 3</h3>
+            <p className="text-[#444] text-[12px] mb-1">Tech Stack</p>
+            <p>Description</p>
           </div>
         </section>
 
