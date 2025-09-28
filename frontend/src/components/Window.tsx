@@ -74,8 +74,6 @@ const Window: React.FC<WindowProps> = ({
   };
 
   const BAR = 22;
-  const BTN = 11;
-  const CLOSE_BTN = 11;
 
   return (
     <Draggable 
@@ -173,37 +171,6 @@ const Window: React.FC<WindowProps> = ({
   );
 };
 
-interface BtnProps {
-  onClick?: () => void;
-  ariaLabel?: string;
-  size?: number;
-  children: React.ReactNode;
-}
 
-const Win95Btn: React.FC<BtnProps> = ({ onClick, ariaLabel, size = 18, children }) => {
-  return (
-    <button
-      aria-label={ariaLabel}
-      onClick={onClick}
-      style={{
-        width: size,
-        height: size,
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "#C0C0C0",
-        border: "2px solid #fff",
-        borderRightColor: "#404040",
-        borderBottomColor: "#404040",
-        padding: 0,
-        margin: 0,
-        outline: "none",
-        cursor: "pointer",
-      }}
-    >
-      {children}
-    </button>
-  );
-};
 
 export default Window;
