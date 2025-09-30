@@ -37,8 +37,8 @@ const Icon: React.FC<IconProps> = ({
         }}
       />
       <span
-       className={`text-white ${labelSizeClass} mt-[1px] leading-none`}
-       style={{marginTop: "1px",lineHeight: "1px", fontSize: "14.5px",  }}>{label}</span>
+       className={`text-white ${labelSizeClass} mt-0 leading-none`}
+       style={{marginTop: "-2px", lineHeight: "1px", fontSize: "14.5px"}}>{label}</span>
     </div>
   );
 };
