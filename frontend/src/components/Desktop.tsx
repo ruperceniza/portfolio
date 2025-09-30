@@ -99,7 +99,7 @@ const Desktop: React.FC = () => {
           <Icon
             label="Photos"
             img="photos.png"
-            size={64}
+            size={75}
             labelSizeClass="text-sm"
             imageRendering="pixelated"
             aspectRatio="1/1"
