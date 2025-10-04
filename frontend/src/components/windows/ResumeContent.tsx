@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-const ResumeContent: React.FC = () => {
+const ResumeContent: React.FC = memo(() => {
   return (
     <div className="w-full h-full flex flex-col bg-[#c0c0c0] overflow-hidden">
       <div className="bg-[#c0c0c0] p-1">
@@ -68,6 +68,6 @@ const ResumeContent: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ResumeContent;

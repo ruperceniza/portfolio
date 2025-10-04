@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
-const MailContent: React.FC = () => {
+const MailContent: React.FC = memo(() => {
   const [formData, setFormData] = useState({
     to: 'cenizaruper13@gmail.com',
     subject: '',
@@ -150,6 +150,6 @@ const MailContent: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default MailContent;

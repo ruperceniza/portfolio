@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-const PhotosContent: React.FC = () => {
+const PhotosContent: React.FC = memo(() => {
   const photos = [
     {
       src: "/photos/me.jpg",
@@ -45,6 +45,6 @@ const PhotosContent: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default PhotosContent;

@@ -1,22 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { SKILLS_BADGES } from '@/constants/skills';
 
-const AboutContent: React.FC = () => {
-  const badges = [
-    { label: "React", color: "61dafb", logo: "react", textColor: "000000" },
-    { label: "Next.js", color: "000000", logo: "nextdotjs", textColor: "ffffff" },
-    { label: "TypeScript", color: "3178c6", logo: "typescript", textColor: "ffffff" },
-    { label: "JavaScript", color: "f7df1e", logo: "javascript", textColor: "000000" },
-    { label: "HTML5", color: "e34f26", logo: "html5", textColor: "ffffff" },
-    { label: "CSS3", color: "1572b6", logo: "css", textColor: "ffffff" },
-    { label: "TailwindCSS", color: "06b6d4", logo: "tailwindcss", textColor: "ffffff" },
-    { label: "Flutter", color: "02569b", logo: "flutter", textColor: "ffffff" },
-    { label: "Node.js", color: "339933", logo: "nodedotjs", textColor: "ffffff" },
-    { label: "Python", color: "3776ab", logo: "python", textColor: "ffffff" },
-    { label: "Django", color: "092e20", logo: "django", textColor: "ffffff" },
-    { label: "PostgreSQL", color: "336791", logo: "postgresql", textColor: "ffffff" },
-    { label: "Firebase", color: "ffca28", logo: "firebase", textColor: "000000" },
-    { label: "Git", color: "f05032", logo: "git", textColor: "ffffff" },
-  ];
+const AboutContent: React.FC = memo(() => {
 
   return (
     <div className="p-6 w-full text-[13px] text-black leading-[1.6] pr-2 box-border bg-[#c0c0c0]">
@@ -35,11 +20,11 @@ const AboutContent: React.FC = () => {
           <p className="text-[12px] text-[#444]">Location 📍</p>
 
           <div className="flex flex-wrap gap-2 pt-2">
-            {badges.map((b) => (
+            {SKILLS_BADGES.map((badge) => (
               <img
-                key={b.label}
-                src={`https://img.shields.io/badge/${encodeURIComponent(b.label)}-${b.color}?logo=${b.logo}&logoColor=${b.textColor}`}
-                alt={b.label}
+                key={badge.label}
+                src={`https://img.shields.io/badge/${encodeURIComponent(badge.label)}-${badge.color}?logo=${badge.logo}&logoColor=${badge.textColor}`}
+                alt={badge.label}
                 className="h-5"
               />
             ))}
@@ -98,6 +83,6 @@ const AboutContent: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default AboutContent;
