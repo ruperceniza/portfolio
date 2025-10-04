@@ -92,6 +92,10 @@ const Window: React.FC<WindowProps> = ({
       <div
         ref={nodeRef}
         onMouseDown={onFocus}
+        role="dialog"
+        aria-labelledby={`window-title-${title.toLowerCase().replace(/\s+/g, '-')}`}
+        aria-modal="false"
+        tabIndex={-1}
         style={{
           zIndex,
           width: isMaximized ? '100vw' : originalDimensions.width,
@@ -123,11 +127,11 @@ const Window: React.FC<WindowProps> = ({
           {iconSrc && (
             <img
               src={iconSrc}
-              alt=""
+              alt={`${title} window icon`}
               style={{ width: 30, height: 30 }}
             />
           )}
-          {title}
+          <span id={`window-title-${title.toLowerCase().replace(/\s+/g, '-')}`}>{title}</span>
 
           <div className="win95-caption__buttons">
             <button 
