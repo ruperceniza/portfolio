@@ -1,46 +1,28 @@
 import React from 'react';
 import { FaInstagram, FaLinkedin, FaGithub, FaFacebook } from 'react-icons/fa';
 import { MdDescription, MdFolder } from 'react-icons/md';
-
-interface StartMenuProps {
-  openWindow: (title: string, content: React.ReactNode, icon?: string) => void;
-}
+import { PROJECTS } from '@/constants/projects';
+import { SOCIAL_LINKS } from '@/constants/social';
+import { StartMenuProps } from '@/types';
 
 
 
 const createProjectsContent = () => {
-  const projects = [
-    {
-      name: "Portfolio",
-      desc: "Personal portfolio built with TypeScript, featuring a retro Windows 95-inspired UI.",
-      link: "https://github.com/ruperceniza/Portfolio",
-    },
-    {
-      name: "Smart-Surveillance-System",
-      desc: "2025–2026 capstone project focused on real-time surveillance and intelligent detection.",
-      link: "https://github.com/ruperceniza/Smart-Surveillance-System",
-    },
-    {
-      name: "ohatravelersystem",
-      desc: "Public web project built with HTML, emphasizing simplicity and accessibility.",
-      link: "https://github.com/ruperceniza/ohatravelersystem",
-    },
-  ];
 
   return (
     <div className="p-4 w-full text-sm pr-2 box-border">
       <div className="mx-auto max-w-full space-y-3">
-        {projects.map((p) => (
+        {PROJECTS.map((project) => (
           <div
-            key={p.name}
+            key={project.name}
             className="p-3 bg-[#d6d6d6] border border-[#808080]
                        shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
-            <div className="font-bold">{p.name}</div>
-            <div className="text-[#444] mb-1">{p.desc}</div>
-            {p.link && (
+            <div className="font-bold">{project.name}</div>
+            <div className="text-[#444] mb-1">{project.desc}</div>
+            {project.link && (
               <a 
                 className="text-blue-700 underline text-xs" 
-                href={p.link} 
+                href={project.link} 
                 target="_blank" 
                 rel="noreferrer"
               >
@@ -56,30 +38,14 @@ const createProjectsContent = () => {
 
 const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
   const menuItems = [
-    {
-      icon: <FaInstagram />,
-      label: <span className="win95-menu-text">Instagram</span>,
-      action: () => window.open('https://www.instagram.com/noisy.zoy/', '_blank'),
-      bgColor: 'from-purple-500 via-pink-500 to-orange-400'
-    },
-    {
-      icon: <FaFacebook />,
-      label: <span className="win95-menu-text">Facebook</span>,
-      action: () => window.open('https://www.facebook.com/rasceniza/', '_blank'),
-      bgColor: 'bg-blue-600'
-    },
-    {
-      icon: <FaLinkedin />,
-      label: <span className="win95-menu-text">LinkedIn</span>,
-      action: () => window.open('https://linkedin.com', '_blank'),
-      bgColor: 'bg-blue-400'
-    },
-    {
-      icon: <FaGithub />,
-      label: <span className="win95-menu-text">Github</span>,
-      action: () => window.open('https://github.com/ruperceniza', '_blank'),
-      bgColor: 'bg-gray-800'
-    },
+    ...SOCIAL_LINKS.map(social => ({
+      icon: <social.icon />,
+      label: <span className="win95-menu-text">{social.name}</span>,
+      action: () => window.open(social.url, '_blank'),
+      bgColor: `bg-${social.name.toLowerCase() === 'instagram' ? 'pink-500' : 
+                social.name.toLowerCase() === 'linkedin' ? 'blue-500' :
+                social.name.toLowerCase() === 'github' ? 'gray-800' : 'blue-600'}`
+    })),
     { divider: true },
     {
       icon: <MdFolder />,
