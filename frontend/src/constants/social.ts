@@ -6,19 +6,19 @@ export const SOCIAL_LINKS: SocialLink[] = [
     name: "Instagram",
     url: "https://instagram.com/ruperceniza",
     icon: FaInstagram,
-    color: "#E4405F"
+    color: "#E1306C"
   },
   {
     name: "LinkedIn", 
     url: "https://linkedin.com/in/ruperceniza",
     icon: FaLinkedin,
-    color: "#0077B5"
+    color: "#0A66C2"
   },
   {
     name: "GitHub",
     url: "https://github.com/ruperceniza", 
     icon: FaGithub,
-    color: "#181717"
+    color: "#000000"
   },
   {
     name: "Facebook",

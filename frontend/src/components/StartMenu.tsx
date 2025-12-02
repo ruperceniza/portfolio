@@ -39,12 +39,10 @@ const createProjectsContent = () => {
 const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
   const menuItems = [
     ...SOCIAL_LINKS.map(social => ({
-      icon: <social.icon />,
+      icon: <social.icon color={social.color} size={20} />,
       label: <span className="win95-menu-text">{social.name}</span>,
       action: () => window.open(social.url, '_blank'),
-      bgColor: `bg-${social.name.toLowerCase() === 'instagram' ? 'pink-500' : 
-                social.name.toLowerCase() === 'linkedin' ? 'blue-500' :
-                social.name.toLowerCase() === 'github' ? 'gray-800' : 'blue-600'}`
+      bgColor: 'bg-gray-200'
     })),
     { divider: true },
     {
@@ -79,9 +77,8 @@ const StartMenu: React.FC<StartMenuProps> = ({ openWindow }) => {
               onClick={item.action}
             >
               <div className="startmenu-icon">
-                <div className={`w-7 h-7 rounded ${item.bgColor === 'from-purple-500 via-pink-500 to-orange-400' ? 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400' : item.bgColor}
-                 flex items-center justify-center text-white`}>
-                  <span className="text-lg">{item.icon}</span>
+                <div className={`w-7 h-7 rounded ${item.bgColor} flex items-center justify-center`}>
+                  {item.icon}
                 </div>
               </div>
               <span className="truncate">{item.label}</span>

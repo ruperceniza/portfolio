@@ -71,7 +71,7 @@ export interface StartMenuProps {
 export interface SocialLink {
   name: string;
   url: string;
-  icon: React.ComponentType;
+  icon: React.ComponentType<{ color?: string; size?: number; className?: string }>;
   color: string;
 }
 

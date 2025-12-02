@@ -383,6 +383,10 @@ div.window-titlebar button.close-button.button:active,
   font-size: 20px;
 }
 
+.startmenu-icon svg {
+  color: inherit !important;
+}
+
 .win95-font {
   font-family: "Microsoft Sans Serif", "MS Sans Serif", "Tahoma", "Verdana", sans-serif;
   letter-spacing: -0.5px;
