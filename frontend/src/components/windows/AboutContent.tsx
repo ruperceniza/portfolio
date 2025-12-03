@@ -4,20 +4,23 @@ import { SKILLS_BADGES } from '@/constants/skills';
 const AboutContent: React.FC = memo(() => {
 
   return (
-    <div className="p-6 w-full text-[13px] text-black leading-[1.6] pr-2 box-border bg-[#c0c0c0]">
-      <div className="mx-auto max-w-full space-y-8">
-        <div className="space-y-3">
-          <img
-            src="/photos/me.jpg"
-            alt="Ruper"
-            className="block w-full h-auto mx-auto
-                       border border-[#808080]
-                       shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-          />
+    <div className="p-6 w-full text-[13px] text-black leading-[1.8] pr-2 box-border bg-[#c0c0c0]">
+      <div className="mx-auto max-w-full space-y-8" style={{ paddingLeft: '48px', paddingRight: '48px' }}>
+        <div className="space-y-4">
+          <div className="flex justify-center">
+            <img
+              src="/photos/me.png"
+              alt="Ruper"
+              className="block w-48 h-auto m-4
+                         border border-[#808080]
+                         shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+            />
+          </div>
           <h1 className="font-bold text-[22px] mt-4">Ruper Art Ceniza</h1>
-          <p className="text-[#333] -mt-1">Dev Role</p>
-          <p className="text-[12px] text-[#444]">Location 📍</p>
+          <p className="text-[12px] text-[#444]">Philippines📍</p>
+
+          <div style={{ marginBottom: '16px' }}></div>
 
           <div className="flex flex-wrap gap-2 pt-2">
             {SKILLS_BADGES.map((badge) => (
@@ -29,50 +32,49 @@ const AboutContent: React.FC = memo(() => {
               />
             ))}
           </div>
+
+          <div style={{ marginBottom: '20px' }}></div>
         </div>
 
-        <section className="space-y-2">
+        <section className="space-y-3">
           <h2 className="font-bold underline">About Me</h2>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen
-            book. It has survived not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-            sheets containing Lorem Ipsum passages, and more recently with desktop
-            publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          <p className="leading-[1.8]" style={{ lineHeight: '1.8' }}>
+            I'm a 22-year-old IT student who's passionate about exploring technology and building innovative solutions. 
+            I have a strong interest in both web development and software development, constantly learning new frameworks, 
+            languages, and tools to expand my skillset.
+            <br /><br />
+            Through my studies and personal projects, I've gained experience in various programming languages and technologies. 
+            I enjoy the challenge of solving complex problems and turning ideas into functional applications. 
+            My curiosity drives me to stay updated with the latest trends in technology and development practices.
           </p>
         </section>
 
-        <section className="space-y-2">
-          <h2 className="font-bold underline">Employment / Experience</h2>
-          <div>
-            <h3 className="font-bold">Role</h3>
-            <p className="text-[#444] text-[12px] mb-1">Position</p>
-            <p>
-              Description
-            </p>
+        <div style={{ marginBottom: '24px' }}></div>
+
+        <section className="space-y-3">
+          <h2 className="font-bold underline">Experience & Projects</h2>
+          <div className="space-y-3">
+
           </div>
-          <div>
+          <div className="space-y-3">
             <h3 className="font-bold">Project 1</h3>
             <p className="text-[#444] text-[12px] mb-1">Short Description</p>
-            <p>
+            <p className="leading-[1.8]">
               Description
             </p>
           </div>
         </section>
 
-        <section className="space-y-2">
-          <h2 className="font-bold underline">Projects & Achievements</h2>
-          <div>
+        <section className="space-y-3">
+          <div className="space-y-3">
             <h3 className="font-bold">Project 2</h3>
             <p className="text-[#444] text-[12px] mb-1">Tech Stack</p>
-            <p>Description</p>
+            <p className="leading-[1.8]">Description</p>
           </div>
-          <div>
+          <div className="space-y-3">
             <h3 className="font-bold">Project 3</h3>
             <p className="text-[#444] text-[12px] mb-1">Tech Stack</p>
-            <p>Description</p>
+            <p className="leading-[1.8]">Description</p>
           </div>
         </section>
 
