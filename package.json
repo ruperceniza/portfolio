@@ -8,6 +8,11 @@
     "start": "cd frontend && npm start",
     "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install"
   },
+  "dependencies": {
+    "next": "15.4.5",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
   "devDependencies": {
     "concurrently": "^8.2.2"
   }
