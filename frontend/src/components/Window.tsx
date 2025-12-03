@@ -128,7 +128,7 @@ const Window: React.FC<WindowProps> = ({
             <img
               src={iconSrc}
               alt={`${title} window icon`}
-              style={{ width: 30, height: 30 }}
+              style={{ width: 16, height: 16, marginRight: '8px' }}
             />
           )}
           <span id={`window-title-${title.toLowerCase().replace(/\s+/g, '-')}`}>{title}</span>
