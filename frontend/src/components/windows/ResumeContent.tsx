@@ -70,4 +70,6 @@ const ResumeContent: React.FC = memo(() => {
   );
 });
 
+ResumeContent.displayName = 'ResumeContent';
+
 export default ResumeContent;

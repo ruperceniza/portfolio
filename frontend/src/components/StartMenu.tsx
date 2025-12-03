@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaInstagram, FaLinkedin, FaGithub, FaFacebook } from 'react-icons/fa';
 import { MdDescription, MdFolder } from 'react-icons/md';
 import { PROJECTS } from '@/constants/projects';
 import { SOCIAL_LINKS } from '@/constants/social';

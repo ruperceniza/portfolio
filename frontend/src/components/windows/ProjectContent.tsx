@@ -10,16 +10,13 @@ const ProjectContent: React.FC<ProjectContentProps> = memo(({ project }) => {
     <div className="p-8 w-full text-[13px] text-black leading-[1.8] bg-[#c0c0c0] overflow-y-auto max-h-full">
       <div className="max-w-full mx-auto space-y-12" style={{ paddingLeft: '48px', paddingRight: '48px' }}>
         
-        {/* Project Header */}
         <div className="space-y-4 pb-4 border-b-2 border-gray-400">
           <div className="flex items-start justify-between flex-wrap gap-4">
             <div className="flex-1 min-w-0">
-              {/* Header text removed */}
             </div>
           </div>
         </div>
 
-        {/* Main Project Image - First Screenshot */}
         {project.screenshots && project.screenshots.length > 0 && (
           <div className="space-y-3" style={{ marginBottom: '20px' }}>
             <div className="bg-gray-100 border-2 border-gray-300 rounded p-4 text-center">
@@ -41,10 +38,8 @@ const ProjectContent: React.FC<ProjectContentProps> = memo(({ project }) => {
           </div>
         )}
 
-        {/* Additional Screenshots */}
         {project.screenshots && project.screenshots.length > 1 && (
           <div className="space-y-8" style={{ marginTop: '10px' }}>
-            {/* Dashboard View Heading */}
             <div className="text-left" style={{ marginBottom: '10px' }}>
               <h3 className="text-base font-bold text-gray-800">Dashboard View</h3>
             </div>
@@ -70,7 +65,6 @@ const ProjectContent: React.FC<ProjectContentProps> = memo(({ project }) => {
               ))}
             </div>
             
-            {/* Project Description - moved below second image */}
             <div className="space-y-3" style={{ marginTop: '30px' }}>
               <p className="text-sm leading-relaxed text-gray-700 pl-2 border-l-4 border-blue-400 bg-[#c0c0c0] p-4 rounded-r">
                 {project.longDescription || project.description}
@@ -79,7 +73,6 @@ const ProjectContent: React.FC<ProjectContentProps> = memo(({ project }) => {
           </div>
         )}
 
-        {/* Technologies */}
         <div className="space-y-3" style={{ marginTop: '12px' }}>
           <h3 className="text-base font-bold text-gray-800 border-b border-gray-300 pb-1"><strong>Technologies Used</strong></h3>
           <div className="flex gap-2 flex-wrap pl-4">

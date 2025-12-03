@@ -39,11 +39,11 @@ const AboutContent: React.FC = memo(() => {
         <section className="space-y-3">
           <h2 className="font-bold underline">About Me</h2>
           <p className="leading-[1.8]" style={{ lineHeight: '1.8' }}>
-            I'm a 22-year-old IT student who's passionate about exploring technology and building innovative solutions. 
+            I&apos;m a 22-year-old IT student who&apos;s passionate about exploring technology and building innovative solutions. 
             I have a strong interest in both web development and software development, constantly learning new frameworks, 
             languages, and tools to expand my skillset.
             <br /><br />
-            Through my studies and personal projects, I've gained experience in various programming languages and technologies. 
+            Through my studies and personal projects, I&apos;ve gained experience in various programming languages and technologies. 
             I enjoy the challenge of solving complex problems and turning ideas into functional applications. 
             My curiosity drives me to stay updated with the latest trends in technology and development practices.
           </p>
@@ -57,7 +57,7 @@ const AboutContent: React.FC = memo(() => {
 
           </div>
           <div className="space-y-3" style={{ marginBottom: '24px' }}>
-            <h3 className="font-bold">OHA Travelers' Inn Website and PMS | Fullstack Developer </h3>
+            <h3 className="font-bold">OHA Travelers&apos; Inn Website and PMS | Fullstack Developer </h3>
             <p className="text-[#444] text-[12px] mb-1">June 2025</p>
             <ul className="list-disc list-inside space-y-2 pl-4 leading-[1.8]">
               <li>• Built a full-stack Property Management System for a small hotel, supporting room booking, housekeeping, inventory tracking, and staff coordination</li>
@@ -126,5 +126,7 @@ const AboutContent: React.FC = memo(() => {
     </div>
   );
 });
+
+AboutContent.displayName = 'AboutContent';
 
 export default AboutContent;

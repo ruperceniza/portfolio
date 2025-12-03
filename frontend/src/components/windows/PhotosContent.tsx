@@ -47,4 +47,6 @@ const PhotosContent: React.FC = memo(() => {
   );
 });
 
+PhotosContent.displayName = 'PhotosContent';
+
 export default PhotosContent;

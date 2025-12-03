@@ -152,4 +152,6 @@ const MailContent: React.FC = memo(() => {
   );
 });
 
+MailContent.displayName = 'MailContent';
+
 export default MailContent;

@@ -7,7 +7,6 @@ import AboutContent from '@/components/windows/AboutContent';
 import ResumeContent from '@/components/windows/ResumeContent';
 import PhotosContent from '@/components/windows/PhotosContent';
 import MailContent from '@/components/windows/MailContent';
-import ProjectsContent from '@/components/windows/ProjectsContent';
 import ProjectContent from '@/components/windows/ProjectContent';
 import { PROJECTS } from '@/constants/projects';
 
