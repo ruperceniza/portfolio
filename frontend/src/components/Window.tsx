@@ -10,6 +10,8 @@ interface WindowProps {
   onFocus?: () => void;
   isActive?: boolean;
   zIndex?: number;
+  width?: number;
+  height?: number;
   children: React.ReactNode;
 }
 
@@ -22,14 +24,16 @@ const Window: React.FC<WindowProps> = ({
   onFocus,
   isActive,
   zIndex,
+  width = 900,
+  height = 700,
   children,
 }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const [isMaximized, setIsMaximized] = useState(false);
   const [draggableKey, setDraggableKey] = useState(0);
   const [originalDimensions, setOriginalDimensions] = useState({
-    width: 700,
-    height: 550,
+    width: width,
+    height: height,
     top: 50,
     left: 50,
   });

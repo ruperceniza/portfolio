@@ -1,7 +1,16 @@
 export interface Project {
+  id: string;
   name: string;
-  desc: string;
-  link?: string;
+  fullName: string;
+  description: string;
+  longDescription?: string;
+  technologies: string[];
+  githubUrl: string;
+  liveUrl?: string;
+  features?: string[];
+  screenshots?: string[];
+  status?: 'completed' | 'in-progress' | 'maintenance';
+  category: 'web' | 'mobile' | 'ai' | 'system';
 }
 
 export interface Photo {

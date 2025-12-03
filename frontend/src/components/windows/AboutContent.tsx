@@ -56,26 +56,66 @@ const AboutContent: React.FC = memo(() => {
           <div className="space-y-3">
 
           </div>
-          <div className="space-y-3">
-            <h3 className="font-bold">Project 1</h3>
-            <p className="text-[#444] text-[12px] mb-1">Short Description</p>
-            <p className="leading-[1.8]">
-              Description
-            </p>
+          <div className="space-y-3" style={{ marginBottom: '24px' }}>
+            <h3 className="font-bold">OHA Travelers' Inn Website and PMS | Fullstack Developer </h3>
+            <p className="text-[#444] text-[12px] mb-1">June 2025</p>
+            <ul className="list-disc list-inside space-y-2 pl-4 leading-[1.8]">
+              <li>• Built a full-stack Property Management System for a small hotel, supporting room booking, housekeeping, inventory tracking, and staff coordination</li>
+              <li>• Developed RESTful APIs using Django REST Framework and integrated Supabase (PostgreSQL) for data management</li>
+              <li>• Implemented dynamic front-end features with HTML, CSS, JavaScript, jQuery, DataTables, and SweetAlert2</li>
+              <li>• Integrated secure authentication via Supabase Auth (Google OAuth)</li>
+            </ul>
           </div>
         </section>
 
         <section className="space-y-3">
-          <div className="space-y-3">
-            <h3 className="font-bold">Project 2</h3>
-            <p className="text-[#444] text-[12px] mb-1">Tech Stack</p>
-            <p className="leading-[1.8]">Description</p>
+          <div className="space-y-3" style={{ marginBottom: '24px' }}>
+            <h3 className="font-bold">Real-Time Home Intruder Detection Using YOLOv8n for Face and Pose Detection with Local Face Recognition | Backend Developer</h3>
+            <p className="text-[#444] text-[12px] mb-1">November 2025</p>
+            <ul className="list-disc list-inside space-y-2 pl-4 leading-[1.8]">
+              <li>• Developed a real-time home surveillance system integrating YOLOv8n-face, YOLOv8n-pose, and local face recognition</li>
+              <li>• Implemented advanced face recognition using InsightFace with 512-dimensional embeddings</li>
+              <li>• Built AI behavioral analysis to detect crouching, climbing, and loitering</li>
+              <li>• Designed a full production pipeline for data preprocessing, detection, recognition, and alerting</li>
+            </ul>
           </div>
-          <div className="space-y-3">
-            <h3 className="font-bold">Project 3</h3>
-            <p className="text-[#444] text-[12px] mb-1">Tech Stack</p>
-            <p className="leading-[1.8]">Description</p>
+          <div className="space-y-3" style={{ marginBottom: '24px' }}>
+            <h3 className="font-bold">MedEase AI Chatbot Inventory System | Backend Developer</h3>
+            <p className="text-[#444] text-[12px] mb-1">August 2025</p>
+            <ul className="list-disc list-inside space-y-2 pl-4 leading-[1.8]">
+              <li>• Built modern pharmacy management solution with AI-powered conversational interfaces</li>
+              <li>• Integrated GPT-4 for natural language queries and inventory management</li>
+              <li>• Developed real-time inventory tracking and transaction processing</li>
+              <li>• Implemented chatbot interface for pharmacists to interact using natural language</li>
+            </ul>
           </div>
+          <div className="space-y-3" style={{ marginBottom: '24px' }}>
+            <h3 className="font-bold">Univents | Fullstack Developer</h3>
+            <p className="text-[#444] text-[12px] mb-1">September 2025</p>
+            <ul className="list-disc list-inside space-y-2 pl-4 leading-[1.8]">
+              <li>• Created comprehensive university event management platform</li>
+              <li>• Developed features for event creation, management, and participation</li>
+              <li>• Built user registration, and authentication</li>
+              <li>• Implemented push notifications and calendar integration</li>
+            </ul>
+          </div>
+            <div className="space-y-3" style={{ marginBottom: '24px' }}>
+            <h3 className="font-bold">SAMAHAN Newsfeed Website | DevOps Engineer</h3>
+            <p className="text-[#444] text-[12px] mb-1">2025</p>
+            <ul className="list-disc list-inside space-y-2 pl-4 leading-[1.8]">
+              <li>• Managed deployment and infrastructure for student organization website</li>
+              <li>• Configured server environment</li>
+            </ul>
+          </div>
+            <div className="space-y-3" style={{ marginBottom: '24px' }}>
+            <h3 className="font-bold">SAMAHAN Systems Development Website | DevOps Engineer</h3>
+            <p className="text-[#444] text-[12px] mb-1">2025</p>
+            <ul className="list-disc list-inside space-y-2 pl-4 leading-[1.8]">
+              <li>• Managed deployment and infrastructure for student organization website</li>
+              <li>• Configured server environment</li>
+            </ul>
+          </div>
+          
         </section>
 
         <section className="space-y-2 pb-2">

@@ -8,6 +8,8 @@ import ResumeContent from '@/components/windows/ResumeContent';
 import PhotosContent from '@/components/windows/PhotosContent';
 import MailContent from '@/components/windows/MailContent';
 import ProjectsContent from '@/components/windows/ProjectsContent';
+import ProjectContent from '@/components/windows/ProjectContent';
+import { PROJECTS } from '@/constants/projects';
 
 export interface WindowData {
   id: number;
@@ -16,6 +18,8 @@ export interface WindowData {
   minimized?: boolean;
   zIndex: number;
   icon?: string;
+  width?: number;
+  height?: number;
 }
 
 const Desktop: React.FC = () => {
@@ -35,7 +39,7 @@ const Desktop: React.FC = () => {
     setActiveWindowId(id);
   }, []);
 
-  const openWindow = useCallback((title: string, content: ReactNode, icon?: string) => {
+  const openWindow = useCallback((title: string, content: ReactNode, icon?: string, width?: number, height?: number) => {
     const id = nextId;
     setNextId(prev => prev + 1);
     const newZIndex = highestZIndex + 1;
@@ -43,7 +47,7 @@ const Desktop: React.FC = () => {
 
     setWindows((prev) => [
       ...prev,
-      { id, title, content, minimized: false, zIndex: newZIndex, icon },
+      { id, title, content, minimized: false, zIndex: newZIndex, icon, width, height },
     ]);
     setActiveWindowId(id);
   }, [nextId, highestZIndex]);
@@ -81,7 +85,7 @@ const Desktop: React.FC = () => {
             img="mycomputer.png"
             size={64}
             labelSizeClass="text-sm"
-            onClick={() => openWindow("Biography", <AboutContent />, "mycomputer.png")}
+            onClick={() => openWindow("Biography", <AboutContent />, "mycomputer.png", 900, 700)}
           />
           <Icon
             label="Résumé"
@@ -102,28 +106,48 @@ const Desktop: React.FC = () => {
             img="github.png"
             size={32}
             labelSizeClass="text-sm"
-            onClick={() => openWindow("OHA Inn", <ProjectsContent />, "github.png")}
+            onClick={() => {
+              const project = PROJECTS.find(p => p.id === 'oha-inn');
+              if (project) {
+                openWindow(project.fullName, <ProjectContent project={project} />, "github.png");
+              }
+            }}
           />
           <Icon
             label="Smart CCTV"
             img="github.png"
             size={32}
             labelSizeClass="text-sm"
-            onClick={() => openWindow("Smart CCTV", <ProjectsContent />, "github.png")}
+            onClick={() => {
+              const project = PROJECTS.find(p => p.id === 'smart-cctv');
+              if (project) {
+                openWindow(project.fullName, <ProjectContent project={project} />, "github.png");
+              }
+            }}
           />
           <Icon
             label="MedEase AI"
             img="github.png"
             size={32}
             labelSizeClass="text-sm"
-            onClick={() => openWindow("MedEase AI", <ProjectsContent />, "github.png")}
+            onClick={() => {
+              const project = PROJECTS.find(p => p.id === 'medease-ai');
+              if (project) {
+                openWindow(project.fullName, <ProjectContent project={project} />, "github.png");
+              }
+            }}
           />
           <Icon
             label="Univents"
             img="github.png"
             size={32}
             labelSizeClass="text-sm"
-            onClick={() => openWindow("Univents", <ProjectsContent />, "github.png")}
+            onClick={() => {
+              const project = PROJECTS.find(p => p.id === 'univents');
+              if (project) {
+                openWindow(project.fullName, <ProjectContent project={project} />, "github.png");
+              }
+            }}
           />
           <Icon
             label="Photos"
@@ -149,6 +173,8 @@ const Desktop: React.FC = () => {
               onFocus={() => bringToFront(win.id)}
               isActive={activeWindowId === win.id}
               zIndex={win.zIndex}
+              width={win.width}
+              height={win.height}
             >
               {win.content}
             </Window>

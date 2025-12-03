@@ -14,15 +14,15 @@ const createProjectsContent = () => {
       <div className="mx-auto max-w-full space-y-3">
         {PROJECTS.map((project) => (
           <div
-            key={project.name}
+            key={project.id}
             className="p-3 bg-[#d6d6d6] border border-[#808080]
                        shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
             <div className="font-bold">{project.name}</div>
-            <div className="text-[#444] mb-1">{project.desc}</div>
-            {project.link && (
+            <div className="text-[#444] mb-1">{project.description}</div>
+            {project.githubUrl && (
               <a 
                 className="text-blue-700 underline text-xs" 
-                href={project.link} 
+                href={project.githubUrl} 
                 target="_blank" 
                 rel="noreferrer"
               >

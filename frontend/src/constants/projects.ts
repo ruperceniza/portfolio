@@ -2,33 +2,79 @@ import { Project } from '@/types';
 
 export const PROJECTS: Project[] = [
   {
-    name: "Portfolio",
-    desc: "Personal portfolio built with TypeScript, React, Next.js and Tailwind CSS featuring a retro Windows 95 interface.",
-    link: "https://github.com/ruperceniza/Portfolio",
+    id: 'oha-inn',
+    name: 'OHA Inn',
+    fullName: 'OHA Traveler\'s Inn',
+    description: 'Property Management System for OHA Traveler\'s Inn. An integrated platform for booking, housekeeping, inventory management, and staff dashboards.',
+    longDescription: 'A comprehensive property management solution designed specifically for OHA Traveler\'s Inn. This system streamlines hotel operations by providing integrated modules for guest booking, room management, housekeeping workflows, inventory tracking, and staff coordination.',
+    technologies: ['Django', 'HTML', 'CSS', 'JavaScript', 'Supabase'],
+    githubUrl: 'https://github.com/ruperceniza/oha-travelers-inn-pms',
+    category: 'web',
+    features: [
+      'Guest booking and reservation management',
+      'Room status tracking and management', 
+      'Housekeeping workflow automation',
+      'Inventory management system',
+      'Staff dashboard and reporting',
+      'Payment processing integration'
+    ],
+    screenshots: [
+      '/work/oha-webpage.png',
+      '/work/oha-dashboard.png'
+    ]
   },
   {
-    name: "Smart-Surveillance-System",
-    desc: "2025–2026 capstone project focused on real-time surveillance and intelligent detection.",
-    link: "https://github.com/ruperceniza/Smart-Surveillance-System",
+    id: 'smart-cctv',
+    name: 'Smart CCTV',
+    fullName: 'Smart Home Intruder Detection',
+    description: 'Real-time smart home surveillance system leveraging YOLOv8n-face, YOLOv8n-pose, and facial recognition to detect intruders and suspicious behaviors.',
+    longDescription: 'An advanced AI-powered home security system that uses cutting-edge computer vision technologies to provide real-time monitoring and threat detection. The system combines facial recognition, pose detection, and behavioral analysis to identify potential security threats and alert homeowners immediately.',
+    technologies: ['Python', 'Flutter', 'Firebase'],
+    githubUrl: 'https://github.com/ruperceniza/smart-home-intruder-detection',
+    category: 'ai',
+    features: [
+      'Real-time facial recognition',
+      'Pose detection and analysis',
+      'Behavioral pattern recognition',
+      'Mobile alert notifications',
+      'Live video streaming',
+      'Historical footage analysis'
+    ]
   },
   {
-    name: "ohatravelersystem",
-    desc: "Travel management system designed to streamline booking and itinerary planning.",
-    link: "https://github.com/ruperceniza/ohatravelersystem",
+    id: 'medease-ai',
+    name: 'MedEase AI',
+    fullName: 'MedEase AI Chatbot Inventory',
+    description: 'Pharmacy Inventory System with GPT-4 powered AI chatbot for real-time conversational access to stock and transactions.',
+    longDescription: 'A modern pharmacy management solution that combines traditional inventory management with AI-powered conversational interfaces. Pharmacists can interact with the system using natural language to check stock levels, process transactions, and manage inventory efficiently.',
+    technologies: ['Dart', 'Flutter', 'Python'],
+    githubUrl: 'https://github.com/ruperceniza/medease-ai-chatbot-inventory',
+    category: 'mobile',
+    features: [
+      'AI-powered chatbot interface',
+      'Real-time inventory tracking',
+      'Natural language queries',
+      'Transaction processing',
+      'Stock level alerts',
+      'Prescription management'
+    ]
   },
   {
-    name: "login-reg-system",
-    desc: "Simple user authentication system with registration and login functionality.",
-    link: "https://github.com/ruperceniza/login-reg-system",
-  },
-  {
-    name: "Simple-POS-Coffee-Shop",
-    desc: "Point of sale system designed specifically for coffee shop operations.",
-    link: "https://github.com/ruperceniza/Simple-POS-Coffee-Shop",
-  },
-  {
-    name: "E-Commerce-Site",
-    desc: "Full-featured e-commerce platform with shopping cart and payment integration.",
-    link: "https://github.com/ruperceniza/E-Commerce-Site",
-  },
+    id: 'univents',
+    name: 'Univents',
+    fullName: 'Univents',
+    description: 'Flutter project for University Events management and coordination.',
+    longDescription: 'A comprehensive university event management platform that allows students, faculty, and administrators to create, manage, and participate in campus events. The system facilitates better communication and coordination for academic and social activities.',
+    technologies: ['Dart', 'Flutter', 'Firebase', 'Material Design'],
+    githubUrl: 'https://github.com/ruperceniza/univents-web',
+    category: 'mobile',
+    features: [
+      'Event creation and management',
+      'User registration and authentication',
+      'Event discovery and search',
+      'RSVP and attendance tracking',
+      'Push notifications',
+      'Calendar integration'
+    ]
+  }
 ];
