@@ -7,6 +7,7 @@ import AboutContent from '@/components/windows/AboutContent';
 import ResumeContent from '@/components/windows/ResumeContent';
 import PhotosContent from '@/components/windows/PhotosContent';
 import MailContent from '@/components/windows/MailContent';
+import ProjectsContent from '@/components/windows/ProjectsContent';
 
 export interface WindowData {
   id: number;
@@ -76,11 +77,11 @@ const Desktop: React.FC = () => {
         <div className="w-4 shrink-0" />
         <div className="absolute top-4 left-4 flex flex-col gap-6 items-start">
           <Icon
-            label="About Me"
+            label="Biography"
             img="mycomputer.png"
             size={64}
             labelSizeClass="text-sm"
-            onClick={() => openWindow("About Me", <AboutContent />, "mycomputer.png")}
+            onClick={() => openWindow("Biography", <AboutContent />, "mycomputer.png")}
           />
           <Icon
             label="Résumé"
@@ -95,6 +96,34 @@ const Desktop: React.FC = () => {
             size={64}
             labelSizeClass="text-sm"
             onClick={() => openWindow("Mail", <MailContent />, "mail.png")}
+          />
+          <Icon
+            label="OHA Inn"
+            img="github.png"
+            size={32}
+            labelSizeClass="text-sm"
+            onClick={() => openWindow("OHA Inn", <ProjectsContent />, "github.png")}
+          />
+          <Icon
+            label="Smart CCTV"
+            img="github.png"
+            size={32}
+            labelSizeClass="text-sm"
+            onClick={() => openWindow("Smart CCTV", <ProjectsContent />, "github.png")}
+          />
+          <Icon
+            label="MedEase AI"
+            img="github.png"
+            size={32}
+            labelSizeClass="text-sm"
+            onClick={() => openWindow("MedEase AI", <ProjectsContent />, "github.png")}
+          />
+          <Icon
+            label="Univents"
+            img="github.png"
+            size={32}
+            labelSizeClass="text-sm"
+            onClick={() => openWindow("Univents", <ProjectsContent />, "github.png")}
           />
           <Icon
             label="Photos"
