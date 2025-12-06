@@ -39,6 +39,21 @@ const Desktop: React.FC = () => {
   }, []);
 
   const openWindow = useCallback((title: string, content: ReactNode, icon?: string, width?: number, height?: number) => {
+    // Check if window with this title already exists
+    const existingWindow = windows.find(w => w.title === title);
+    
+    if (existingWindow) {
+      // Window exists, just un-minimize if needed and bring to front
+      if (existingWindow.minimized) {
+        setWindows((prev) =>
+          prev.map((w) => (w.id === existingWindow.id ? { ...w, minimized: false } : w))
+        );
+      }
+      bringToFront(existingWindow.id);
+      return;
+    }
+    
+    // Window doesn't exist, create new one
     const id = nextId;
     setNextId(prev => prev + 1);
     const newZIndex = highestZIndex + 1;
@@ -49,7 +64,7 @@ const Desktop: React.FC = () => {
       { id, title, content, minimized: false, zIndex: newZIndex, icon, width, height },
     ]);
     setActiveWindowId(id);
-  }, [nextId, highestZIndex]);
+  }, [nextId, highestZIndex, windows, bringToFront]);
 
   const closeWindow = useCallback((id: number) => {
     setWindows((prev) => {
