@@ -20,18 +20,20 @@ const ProjectsContent: React.FC = () => {
   ];
 
   return (
-    <div className="p-4 w-full text-sm pr-2 box-border">
+    <div className="p-4 w-full text-sm pr-2 box-border bg-[#c0c0c0]">
       <div className="mx-auto max-w-full space-y-3">
         {projects.map((p) => (
           <div
             key={p.name}
             className="p-3 bg-[#d6d6d6] border border-[#808080]
-                       shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]">
+                       shadow-[inset_-1px_-1px_#fff,inset_1px_1px_#808080]"
+            style={{ color: '#000000' }}>
             <div className="font-bold">{p.name}</div>
-            <div className="text-[#444] mb-1">{p.desc}</div>
+            <div className="mb-1">{p.desc}</div>
             {p.link && (
               <a 
-                className="text-blue-700 underline text-xs" 
+                className="underline text-xs" 
+                style={{ color: '#0000EE' }}
                 href={p.link} 
                 target="_blank" 
                 rel="noreferrer"

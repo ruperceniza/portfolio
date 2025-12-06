@@ -41,7 +41,7 @@ const ProjectContent: React.FC<ProjectContentProps> = memo(({ project }) => {
         {project.screenshots && project.screenshots.length > 1 && (
           <div className="space-y-8" style={{ marginTop: '10px' }}>
             <div className="text-left" style={{ marginBottom: '10px' }}>
-              <h3 className="text-base font-bold text-gray-800">Dashboard View</h3>
+              <h3 className="text-base font-bold text-black">Dashboard View</h3>
             </div>
             
             <div className="space-y-6">
@@ -66,7 +66,7 @@ const ProjectContent: React.FC<ProjectContentProps> = memo(({ project }) => {
             </div>
             
             <div className="space-y-3" style={{ marginTop: '30px' }}>
-              <p className="text-sm leading-relaxed text-gray-700 pl-2 border-l-4 border-blue-400 bg-[#c0c0c0] p-4 rounded-r">
+              <p className="text-sm leading-relaxed text-black pl-2 border-l-4 border-blue-400 bg-[#c0c0c0] p-4 rounded-r">
                 {project.longDescription || project.description}
               </p>
             </div>
@@ -74,7 +74,7 @@ const ProjectContent: React.FC<ProjectContentProps> = memo(({ project }) => {
         )}
 
         <div className="space-y-3" style={{ marginTop: '12px' }}>
-          <h3 className="text-base font-bold text-gray-800 border-b border-gray-300 pb-1"><strong>Technologies Used</strong></h3>
+          <h3 className="text-base font-bold text-black border-b border-gray-300 pb-1"><strong>Technologies Used</strong></h3>
           <div className="flex gap-2 flex-wrap pl-4">
             {project.technologies.map((tech) => {
               // Color mapping for different technologies
@@ -119,7 +119,7 @@ const ProjectContent: React.FC<ProjectContentProps> = memo(({ project }) => {
               href={project.githubUrl} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 text-gray-800 text-sm rounded hover:bg-gray-100 transition-colors border border-gray-400 shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 text-black text-sm rounded hover:bg-gray-100 transition-colors border border-gray-400 shadow-sm"
             >
               <span>🔗</span>
               <span>View this on GitHub</span>
