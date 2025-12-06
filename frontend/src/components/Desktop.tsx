@@ -102,49 +102,49 @@ const Desktop: React.FC = () => {
           />
           <Icon
             label="OHA Inn"
-            img="github.png"
-            size={32}
+            img="oha.png"
+            size={48}
             labelSizeClass="text-sm"
             onClick={() => {
               const project = PROJECTS.find(p => p.id === 'oha-inn');
               if (project) {
-                openWindow(project.fullName, <ProjectContent project={project} />, "github.png");
+                openWindow(project.fullName, <ProjectContent project={project} />, "oha.png");
               }
             }}
           />
           <Icon
-            label="Smart CCTV"
-            img="github.png"
+            label="RTHID"
+            img="cctv.png"
             size={32}
             labelSizeClass="text-sm"
             onClick={() => {
               const project = PROJECTS.find(p => p.id === 'smart-cctv');
               if (project) {
-                openWindow(project.fullName, <ProjectContent project={project} />, "github.png");
+                openWindow(project.fullName, <ProjectContent project={project} />, "cctv.png");
               }
             }}
           />
           <Icon
             label="MedEase AI"
-            img="github.png"
+            img="pill.png"
             size={32}
             labelSizeClass="text-sm"
             onClick={() => {
               const project = PROJECTS.find(p => p.id === 'medease-ai');
               if (project) {
-                openWindow(project.fullName, <ProjectContent project={project} />, "github.png");
+                openWindow(project.fullName, <ProjectContent project={project} />, "pill.png");
               }
             }}
           />
           <Icon
             label="Univents"
-            img="github.png"
+            img="univents.png"
             size={32}
             labelSizeClass="text-sm"
             onClick={() => {
               const project = PROJECTS.find(p => p.id === 'univents');
               if (project) {
-                openWindow(project.fullName, <ProjectContent project={project} />, "github.png");
+                openWindow(project.fullName, <ProjectContent project={project} />, "univents.png");
               }
             }}
           />
