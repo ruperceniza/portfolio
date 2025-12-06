@@ -95,7 +95,14 @@ const Window: React.FC<WindowProps> = ({
     >
       <div
         ref={nodeRef}
-        onMouseDown={onFocus}
+        onMouseDown={(e) => {
+          e.stopPropagation();
+          onFocus?.();
+        }}
+        onClick={(e) => {
+          e.stopPropagation();
+          onFocus?.();
+        }}
         role="dialog"
         aria-labelledby={`window-title-${title.toLowerCase().replace(/\s+/g, '-')}`}
         aria-modal="false"

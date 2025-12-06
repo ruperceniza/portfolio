@@ -9,6 +9,7 @@ interface TaskbarProps {
   toggleMinimize: (id: number) => void;
   setActiveWindowId: (id: number | null) => void;
   activeWindowId: number | null;
+  bringToFront: (id: number) => void;
 }
 
 const Taskbar: React.FC<TaskbarProps> = ({
@@ -16,7 +17,8 @@ const Taskbar: React.FC<TaskbarProps> = ({
   openWindow,
   toggleMinimize,
   setActiveWindowId,
-  activeWindowId
+  activeWindowId,
+  bringToFront
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -38,7 +40,7 @@ const Taskbar: React.FC<TaskbarProps> = ({
     if (win.minimized) {
       toggleMinimize(win.id);
     }
-    setActiveWindowId(win.id);
+    bringToFront(win.id);
   };
 
   useEffect(() => {

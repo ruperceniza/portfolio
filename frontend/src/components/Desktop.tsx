@@ -193,6 +193,7 @@ const Desktop: React.FC = () => {
         toggleMinimize={toggleMinimize}
         activeWindowId={activeWindowId}
         setActiveWindowId={setActiveWindowId}
+        bringToFront={bringToFront}
       />
     </div>
   );
