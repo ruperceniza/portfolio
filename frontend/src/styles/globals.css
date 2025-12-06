@@ -424,6 +424,15 @@ div.window-titlebar button.close-button.button:active,
   max-width: 160px;
   font-family: "MS Sans Serif", sans-serif;
   color: black;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .navbar-item:hover {
