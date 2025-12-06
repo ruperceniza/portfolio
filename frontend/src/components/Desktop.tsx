@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, ReactNode, useCallback } from 'react';
+import React, { useState, ReactNode, useCallback, useEffect } from 'react';
 import Icon from '@/components/Icon';
 import Window from '@/components/Window';
 import Taskbar from '@/components/Taskbar';
@@ -70,6 +70,13 @@ const Desktop: React.FC = () => {
     );
     bringToFront(id);
   }, [bringToFront]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      openWindow("Biography", <AboutContent />, "mycomputer.png", 900, 700);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []); 
 
   return (
     <div

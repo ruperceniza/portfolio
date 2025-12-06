@@ -85,7 +85,7 @@ const Window: React.FC<WindowProps> = ({
       handle=".window-titlebar" 
       nodeRef={nodeRef} 
       disabled={isMaximized}
-      defaultPosition={isMaximized ? { x: 0, y: 0 } : { x: 0, y: 0 }}
+      defaultPosition={isMaximized ? { x: 0, y: 0 } : { x: 200, y: 0 }}
       bounds={{
         left: -400,
         top: 0,
