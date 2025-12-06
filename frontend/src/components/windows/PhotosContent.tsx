@@ -4,8 +4,8 @@ const PhotosContent: React.FC = memo(() => {
   const photos = [
     {
       src: "/photos/me.jpg",
-      title: "Profile Photo",
-      description: "Professional headshot"
+      title: "",
+      description: ""
     },
   ];
 
@@ -14,7 +14,7 @@ const PhotosContent: React.FC = memo(() => {
       <div className="mx-auto max-w-full space-y-4">
         <div className="text-center mb-4">
           <h2 className="text-lg font-bold">Photo Gallery</h2>
-          <p className="text-xs text-[#444]">Personal and professional photos</p>
+          <p className="text-xs text-[#444]"></p>
         </div>
         
         <div className="grid grid-cols-2 gap-4">
