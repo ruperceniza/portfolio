@@ -19,6 +19,7 @@ export interface WindowData {
   icon?: string;
   width?: number;
   height?: number;
+  position?: { x: number; y: number };
 }
 
 const Desktop: React.FC = () => {
@@ -39,11 +40,9 @@ const Desktop: React.FC = () => {
   }, []);
 
   const openWindow = useCallback((title: string, content: ReactNode, icon?: string, width?: number, height?: number) => {
-    // Check if window with this title already exists
     const existingWindow = windows.find(w => w.title === title);
     
     if (existingWindow) {
-      // Window exists, just un-minimize if needed and bring to front
       if (existingWindow.minimized) {
         setWindows((prev) =>
           prev.map((w) => (w.id === existingWindow.id ? { ...w, minimized: false } : w))
@@ -53,7 +52,6 @@ const Desktop: React.FC = () => {
       return;
     }
     
-    // Window doesn't exist, create new one
     const id = nextId;
     setNextId(prev => prev + 1);
     const newZIndex = highestZIndex + 1;
@@ -85,6 +83,12 @@ const Desktop: React.FC = () => {
     );
     bringToFront(id);
   }, [bringToFront]);
+
+  const updateWindowPosition = useCallback((id: number, position: { x: number; y: number }) => {
+    setWindows((prev) =>
+      prev.map((w) => (w.id === id ? { ...w, position } : w))
+    );
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -196,6 +200,8 @@ const Desktop: React.FC = () => {
               zIndex={win.zIndex}
               width={win.width}
               height={win.height}
+              position={win.position}
+              onPositionChange={(position) => updateWindowPosition(win.id, position)}
             >
               {win.content}
             </Window>

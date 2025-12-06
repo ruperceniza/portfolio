@@ -12,6 +12,8 @@ interface WindowProps {
   zIndex?: number;
   width?: number;
   height?: number;
+  position?: { x: number; y: number };
+  onPositionChange?: (position: { x: number; y: number }) => void;
   children: React.ReactNode;
 }
 
@@ -26,6 +28,8 @@ const Window: React.FC<WindowProps> = ({
   zIndex,
   width = 900,
   height = 700,
+  position,
+  onPositionChange,
   children,
 }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
@@ -85,7 +89,12 @@ const Window: React.FC<WindowProps> = ({
       handle=".window-titlebar" 
       nodeRef={nodeRef} 
       disabled={isMaximized}
-      defaultPosition={isMaximized ? { x: 0, y: 0 } : { x: 200, y: 0 }}
+      defaultPosition={isMaximized ? { x: 0, y: 0 } : (position ?? { x: 200, y: 0 })}
+      onStop={(e, data) => {
+        if (!isMaximized && onPositionChange) {
+          onPositionChange({ x: data.x, y: data.y });
+        }
+      }}
       bounds={{
         left: -400,
         top: 0,
