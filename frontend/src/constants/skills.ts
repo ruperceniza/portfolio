@@ -13,7 +13,6 @@ export const SKILLS_BADGES: SkillBadge[] = [
   { label: "VS Code", color: "007acc", logo: "visualstudiocode", textColor: "ffffff" },
   { label: "PostgreSQL", color: "4169e1", logo: "postgresql", textColor: "ffffff" },
   { label: "MongoDB", color: "47a248", logo: "mongodb", textColor: "ffffff" },
-  { label: "Express", color: "000000", logo: "express", textColor: "ffffff" },
   { label: "CSS3", color: "1572b6", logo: "css3", textColor: "ffffff" },
   { label: "HTML5", color: "e34f26", logo: "html5", textColor: "ffffff" },
 ];
