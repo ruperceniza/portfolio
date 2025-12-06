@@ -80,7 +80,7 @@ const Desktop: React.FC = () => {
 
   return (
     <div
-      className="h-screen w-screen font-win95 relative bg-cover bg-center"
+      className="h-screen w-screen font-win95 relative bg-cover bg-center overflow-hidden"
       style={{ backgroundImage: "url('/icons/wallpaper.jpg')" }}
     >
       <div className="flex">
