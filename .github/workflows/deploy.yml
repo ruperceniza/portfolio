@@ -1,0 +1,54 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      
+      - name: Install dependencies
+        run: |
+          cd frontend
+          npm ci
+      
+      - name: Build Next.js
+        run: |
+          cd frontend
+          npm run build
+        env:
+          NEXT_PUBLIC_CDN_URL: https://ruper-portf-assets.s3.ap-southeast-1.amazonaws.com
+      
+      - name: Deploy to EC2
+        env:
+          EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+          EC2_HOST: ${{ secrets.EC2_HOST }}
+          EC2_USER: ${{ secrets.EC2_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$EC2_SSH_KEY" > ~/.ssh/ec2_key.pem
+          chmod 600 ~/.ssh/ec2_key.pem
+          ssh-keyscan -H $EC2_HOST >> ~/.ssh/known_hosts
+          
+          cd frontend
+          scp -i ~/.ssh/ec2_key.pem -r out/* $EC2_USER@$EC2_HOST:/var/www/portfolio/
+          
+          ssh -i ~/.ssh/ec2_key.pem $EC2_USER@$EC2_HOST \
+            "sudo chown -R www-data:www-data /var/www/portfolio && sudo chmod -R 755 /var/www/portfolio"
+      
+      - name: Deployment successful
+        run: echo "Deployment completed to http://${{ secrets.EC2_HOST }}"
