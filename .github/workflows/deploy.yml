@@ -34,24 +34,29 @@ jobs:
           NEXT_PUBLIC_CDN_URL: https://ruper-portf-assets.s3.ap-southeast-1.amazonaws.com
       
       - name: Deploy to EC2
-        env:
-          EC2_SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
-          EC2_HOST: ${{ secrets.EC2_HOST }}
-          EC2_USER: ${{ secrets.EC2_USER }}
-        run: |
-          mkdir -p ~/.ssh
-          printf "%s" "$EC2_SSH_KEY" > ~/.ssh/ec2_key.pem
-          chmod 600 ~/.ssh/ec2_key.pem
-          ssh-keyscan -H $EC2_HOST >> ~/.ssh/known_hosts 2>/dev/null
-          
-          ssh -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "sudo mkdir -p /var/www/portfolio; sudo chown -R ubuntu:ubuntu /var/www/portfolio; sudo rm -rf /var/www/portfolio/*"
-          
-          cd frontend/out
-          tar czf ../deploy.tar.gz .
-          cd ..
-          scp -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no deploy.tar.gz $EC2_USER@$EC2_HOST:/tmp/deploy.tar.gz
-          
-          ssh -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "cd /var/www/portfolio; tar xzf /tmp/deploy.tar.gz; rm /tmp/deploy.tar.gz; sudo chown -R www-data:www-data /var/www/portfolio; sudo chmod -R 755 /var/www/portfolio"
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "frontend/out/*"
+          target: "/tmp/portfolio-deploy"
+          strip_components: 2
+      
+      - name: Move files and set permissions
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            sudo mkdir -p /var/www/portfolio
+            sudo chown -R ubuntu:ubuntu /var/www/portfolio
+            sudo rm -rf /var/www/portfolio/*
+            sudo cp -r /tmp/portfolio-deploy/* /var/www/portfolio/
+            sudo chown -R www-data:www-data /var/www/portfolio
+            sudo chmod -R 755 /var/www/portfolio
+            rm -rf /tmp/portfolio-deploy
       
       - name: Deployment successful
         run: echo "Deployment completed to http://${{ secrets.EC2_HOST }}"
