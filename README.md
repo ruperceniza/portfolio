@@ -1,5 +1,5 @@
 
-Visit the portfolio:(https://ruperceniza-portfolio.vercel.app/)(54.169.105.12)
+Visit the portfolio:(https://ruperceniza-portfolio.vercel.app/) (54.169.105.12)
 
 Tech Stack
 
