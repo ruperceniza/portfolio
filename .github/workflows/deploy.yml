@@ -44,26 +44,14 @@ jobs:
           chmod 600 ~/.ssh/ec2_key.pem
           ssh-keyscan -H $EC2_HOST >> ~/.ssh/known_hosts 2>/dev/null
           
-          ssh -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "echo 'SSH connection successful'"
-          
-          ssh -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST << 'ENDSSH'
-            sudo mkdir -p /var/www/portfolio
-            sudo chown -R ubuntu:ubuntu /var/www/portfolio
-            sudo rm -rf /var/www/portfolio/*
-          ENDSSH
+          ssh -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "sudo mkdir -p /var/www/portfolio; sudo chown -R ubuntu:ubuntu /var/www/portfolio; sudo rm -rf /var/www/portfolio/*"
           
           cd frontend/out
           tar czf ../deploy.tar.gz .
           cd ..
           scp -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no deploy.tar.gz $EC2_USER@$EC2_HOST:/tmp/deploy.tar.gz
           
-          ssh -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST << 'ENDSSH'
-            cd /var/www/portfolio
-            tar xzf /tmp/deploy.tar.gz
-            rm /tmp/deploy.tar.gz
-            sudo chown -R www-data:www-data /var/www/portfolio
-            sudo chmod -R 755 /var/www/portfolio
-          ENDSSH
+          ssh -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no $EC2_USER@$EC2_HOST "cd /var/www/portfolio; tar xzf /tmp/deploy.tar.gz; rm /tmp/deploy.tar.gz; sudo chown -R www-data:www-data /var/www/portfolio; sudo chmod -R 755 /var/www/portfolio"
       
       - name: Deployment successful
         run: echo "Deployment completed to http://${{ secrets.EC2_HOST }}"
