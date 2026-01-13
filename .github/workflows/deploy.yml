@@ -44,8 +44,12 @@ jobs:
           chmod 600 ~/.ssh/ec2_key.pem
           ssh-keyscan -H $EC2_HOST >> ~/.ssh/known_hosts
           
+          ssh -i ~/.ssh/ec2_key.pem $EC2_USER@$EC2_HOST \
+            "sudo mkdir -p /var/www/portfolio && sudo chown -R $EC2_USER:$EC2_USER /var/www/portfolio"
+          
           cd frontend
-          scp -i ~/.ssh/ec2_key.pem -r out/* $EC2_USER@$EC2_HOST:/var/www/portfolio/
+          rsync -avz --delete -e "ssh -i ~/.ssh/ec2_key.pem -o StrictHostKeyChecking=no" \
+            out/ $EC2_USER@$EC2_HOST:/var/www/portfolio/
           
           ssh -i ~/.ssh/ec2_key.pem $EC2_USER@$EC2_HOST \
             "sudo chown -R www-data:www-data /var/www/portfolio && sudo chmod -R 755 /var/www/portfolio"
