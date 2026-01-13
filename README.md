@@ -19,4 +19,5 @@ Backend
 
 Deployment
 - Platform: Vercel
+- Platform: AWS
 - CI/CD: Automatic deployments via Vercel
