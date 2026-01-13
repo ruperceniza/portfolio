@@ -1,9 +1,11 @@
 import React, { memo } from 'react';
 
+const CDN_URL = process.env.NEXT_PUBLIC_CDN_URL || '';
+
 const PhotosContent: React.FC = memo(() => {
   const photos = [
     {
-      src: "/photos/me.jpg",
+      src: `${CDN_URL}/photos/me.jpg`,
       title: "",
       description: ""
     },

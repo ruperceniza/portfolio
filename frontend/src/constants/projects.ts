@@ -1,5 +1,7 @@
 import { Project } from '@/types';
 
+const CDN_URL = process.env.NEXT_PUBLIC_CDN_URL || '';
+
 export const PROJECTS: Project[] = [
   {
     id: 'oha-inn',
@@ -19,8 +21,8 @@ export const PROJECTS: Project[] = [
       'Payment processing integration'
     ],
     screenshots: [
-      '/work/oha-webpage.png',
-      '/work/oha-dashboard.png'
+      `${CDN_URL}/work/oha-webpage.png`,
+      `${CDN_URL}/work/oha-dashboard.png`
     ]
   },
   {

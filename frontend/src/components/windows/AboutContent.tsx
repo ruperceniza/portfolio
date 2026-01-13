@@ -1,6 +1,8 @@
 import React, { memo } from 'react';
 import { SKILLS_BADGES } from '@/constants/skills';
 
+const CDN_URL = process.env.NEXT_PUBLIC_CDN_URL || '';
+
 const AboutContent: React.FC = memo(() => {
 
   return (
@@ -9,7 +11,7 @@ const AboutContent: React.FC = memo(() => {
         <div className="space-y-4">
           <div className="flex justify-center">
             <img
-              src="/photos/me.png"
+              src={`${CDN_URL}/photos/me.png`}
               alt="Ruper"
               className="block w-48 h-auto m-4
                          border border-[#808080]
