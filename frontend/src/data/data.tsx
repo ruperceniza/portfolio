@@ -7,6 +7,7 @@ import {
   PortfolioItem,
   SkillGroup,
   Social,
+  TestimonialSection,
   TimelineItem,
 } from './dataDef';
 
@@ -492,6 +493,14 @@ export const experience = new Proxy([] as TimelineItem[], {
     return (target as any)[prop];
   }
 });
+
+/**
+ * Testimonial section
+ */
+export const testimonial: TestimonialSection = {
+  imageSrc: heroImage,
+  testimonials: [],
+};
 
 /**
  * Contact section
