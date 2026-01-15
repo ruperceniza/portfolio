@@ -1,51 +1,54 @@
 @import "tailwindcss";
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-  --win95-bar-h: 18px;
-  --win95-btn: 14px;
-  --win95-face: #c0c0c0;
-  --win95-face-hover: #bdbdbd;
-  --win95-face-active: #a0a0a0;
-  --win95-light: #ffffff;
-  --win95-dark: #404040;
-  --win95-blue: #000080;
-  --win95-inactive: #7f7f7f;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 }
 
-#__next-build-watcher,
-#__next-route-announcer__,
-#__next_dev_client_overlay__,
-#__next-dev-overlay,
-#__next-dev-overlay * {
-  display: none !important;
+@supports (-webkit-touch-callout: none) {
+  .h-screen {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Global styles */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  height: 100vh;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'W95FA', 'MS Sans Serif', 'Microsoft Sans Serif', Tahoma, Verdana, sans-serif;
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #444444;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;
+  background-color: #fafafa;
 }
 
-@font-face {
-  font-family: 'W95FA';
-  src: url('/fonts/W95Fa.woff2') format('woff2'),
-       url('/fonts/W95Fa.woff') format('woff'),
-       url('/fonts/W95FA.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+td,
+th {
+  padding: 4px 8px 4px 4px;
+  text-align: left;
+}
+
+th {
+  font-weight: 600;
 }
 
 div.window-titlebar button.minimize-button.button,
