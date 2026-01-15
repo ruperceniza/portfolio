@@ -11,6 +11,7 @@ export interface Project {
   screenshots?: string[];
   status?: 'completed' | 'in-progress' | 'maintenance';
   category: 'web' | 'mobile' | 'ai' | 'system';
+  icon?: string;
 }
 
 export interface Photo {

@@ -8,7 +8,8 @@ import ResumeContent from '@/components/windows/ResumeContent';
 import PhotosContent from '@/components/windows/PhotosContent';
 import MailContent from '@/components/windows/MailContent';
 import ProjectContent from '@/components/windows/ProjectContent';
-import { PROJECTS } from '@/constants/projects';
+import { getProjects } from '@/lib/sanity';
+import type { Project } from '@/types';
 
 export interface WindowData {
   id: number;
@@ -27,6 +28,7 @@ const Desktop: React.FC = () => {
   const [activeWindowId, setActiveWindowId] = useState<number | null>(null);
   const [highestZIndex, setHighestZIndex] = useState(1);
   const [nextId, setNextId] = useState(1);
+  const [allProjects, setAllProjects] = useState<Project[]>([]);
 
   const bringToFront = useCallback((id: number) => {
     setHighestZIndex((prev) => {
@@ -94,6 +96,16 @@ const Desktop: React.FC = () => {
     const timer = setTimeout(() => {
       openWindow("Biography", <AboutContent />, "mycomputer.png", 900, 700);
     }, 500);
+
+    // Fetch all projects from Sanity CMS
+    getProjects()
+      .then((sanityProjects) => {
+        if (sanityProjects) {
+          setAllProjects(sanityProjects);
+        }
+      })
+      .catch((err) => console.error('Failed to fetch Sanity projects:', err));
+
     return () => clearTimeout(timer);
   }, []); 
 
@@ -126,54 +138,21 @@ const Desktop: React.FC = () => {
             labelSizeClass="text-sm"
             onClick={() => openWindow("Mail", <MailContent />, "mail.png")}
           />
-          <Icon
-            label="OHA Inn"
-            img="oha.png"
-            size={48}
-            labelSizeClass="text-sm"
-            onClick={() => {
-              const project = PROJECTS.find(p => p.id === 'oha-inn');
-              if (project) {
-                openWindow(project.fullName, <ProjectContent project={project} />, "oha.png");
-              }
-            }}
-          />
-          <Icon
-            label="RTHID"
-            img="cctv.png"
-            size={32}
-            labelSizeClass="text-sm"
-            onClick={() => {
-              const project = PROJECTS.find(p => p.id === 'smart-cctv');
-              if (project) {
-                openWindow(project.fullName, <ProjectContent project={project} />, "cctv.png");
-              }
-            }}
-          />
-          <Icon
-            label="MedEase AI"
-            img="pill.png"
-            size={32}
-            labelSizeClass="text-sm"
-            onClick={() => {
-              const project = PROJECTS.find(p => p.id === 'medease-ai');
-              if (project) {
-                openWindow(project.fullName, <ProjectContent project={project} />, "pill.png");
-              }
-            }}
-          />
-          <Icon
-            label="Univents"
-            img="univents.png"
-            size={32}
-            labelSizeClass="text-sm"
-            onClick={() => {
-              const project = PROJECTS.find(p => p.id === 'univents');
-              if (project) {
-                openWindow(project.fullName, <ProjectContent project={project} />, "univents.png");
-              }
-            }}
-          />
+          
+          {/* Dynamic Project Icons from Sanity CMS */}
+          {allProjects.map((project) => (
+            <Icon
+              key={project.id}
+              label={project.name}
+              img={project.icon || "folder.png"}
+              size={48}
+              labelSizeClass="text-sm"
+              onClick={() => {
+                openWindow(project.fullName, <ProjectContent project={project} />, project.icon || "folder.png");
+              }}
+            />
+          ))}
+          
           <Icon
             label="Photos"
             img="photos.png"

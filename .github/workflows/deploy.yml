@@ -32,6 +32,10 @@ jobs:
           npm run build
         env:
           NEXT_PUBLIC_CDN_URL: https://ruper-portf-assets.s3.ap-southeast-1.amazonaws.com
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
+          NEXT_PUBLIC_SANITY_API_VERSION: 2024-01-01
+          NEXT_PUBLIC_SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
       
       - name: Deploy to EC2
         uses: appleboy/scp-action@v0.1.7
