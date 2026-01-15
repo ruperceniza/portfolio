@@ -1,5 +1,5 @@
 import {StaticImageData} from 'next/image';
-import {FC, ForwardRefExoticComponent, SVGProps} from 'react';
+import {FC, ForwardRefExoticComponent, ReactNode, SVGProps} from 'react';
 
 import {IconProps} from '../components/Icon/Icon';
 
@@ -23,7 +23,7 @@ export interface HomepageMeta {
 export interface Hero {
   imageSrc: string | StaticImageData;
   name: string;
-  description: JSX.Element;
+  description: ReactNode;
   actions: HeroActionItem[];
 }
 
