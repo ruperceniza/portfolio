@@ -123,7 +123,7 @@ let _heroData: Hero = {
   ],
 };
 
-export const heroData = Object.defineProperty({}, 'valueOf', {
+export const heroData = Object.defineProperty({} as Hero, 'valueOf', {
   get() {
     if (sanityAbout) {
       return {
