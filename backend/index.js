@@ -8,9 +8,15 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 app.use(cors());
-app.use(express.json());
+
+// Webhook routes need raw body for signature verification
+app.use('/api/webhook', express.raw({ type: 'application/json', limit: '10mb' }), webhookRoutes);
+
+// For other routes, parse JSON normally
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
 app.use('/api/hello', helloRoutes);
-app.use('/api/webhook', webhookRoutes);
 
 app.get('/', (req, res) => {
   res.json({ message: 'API is working!' });

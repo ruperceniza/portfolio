@@ -4,26 +4,66 @@ const crypto = require('crypto');
 
 exports.handleSanityWebhook = async (req, res) => {
   try {
-    // Verify webhook signature (optional but recommended)
-    const signature = req.headers['sanity-webhook-signature'];
-    const secret = process.env.SANITY_WEBHOOK_SECRET;
+    // Get raw body (Buffer from express.raw())
+    const rawBody = req.body;
 
-    if (secret && signature) {
-      const body = JSON.stringify(req.body);
-      const hash = crypto
-        .createHmac('sha256', secret)
-        .update(body)
-        .digest('hex');
+    // Debug logging
+    console.log('Webhook received:', {
+      headers: req.headers,
+      bodyExists: !!rawBody,
+      isBuffer: Buffer.isBuffer(rawBody),
+      bodyLength: rawBody?.length
+    });
 
-      if (hash !== signature) {
-        console.error('Invalid webhook signature');
-        return res.status(401).json({ error: 'Invalid signature' });
-      }
+    // Check if body exists
+    if (!rawBody || !Buffer.isBuffer(rawBody) || rawBody.length === 0) {
+      console.error('Empty or missing request body, or not a Buffer');
+      return res.status(400).json({
+        error: 'Bad request',
+        details: 'Request body is empty, missing, or not properly formatted'
+      });
     }
 
+    // Verify webhook signature using raw body
+    const signatureHeader = req.headers['sanity-webhook-signature'];
+    const secret = process.env.SANITY_WEBHOOK_SECRET;
+
+    if (secret && signatureHeader) {
+      // Parse Sanity's signature format: "t=timestamp,v1=signature"
+      const parts = signatureHeader.split(',');
+      const timestamp = parts.find(p => p.startsWith('t='))?.split('=')[1];
+      const signature = parts.find(p => p.startsWith('v1='))?.split('=')[1];
+
+      if (!timestamp || !signature) {
+        console.error('Invalid signature format');
+        return res.status(401).json({ error: 'Invalid signature format' });
+      }
+
+      // Compute signature: HMAC-SHA256 of "timestamp.rawBody"
+      const signedPayload = `${timestamp}.${rawBody.toString()}`;
+      const expectedSignature = crypto
+        .createHmac('sha256', secret)
+        .update(signedPayload)
+        .digest('base64')
+        .replace(/\+/g, '-')  // Convert to URL-safe base64
+        .replace(/\//g, '_')  // Convert to URL-safe base64
+        .replace(/=+$/, '');  // Remove padding
+
+      if (expectedSignature !== signature) {
+        console.error('Invalid webhook signature.');
+        console.error('Expected:', expectedSignature);
+        console.error('Got:', signature);
+        return res.status(401).json({ error: 'Invalid signature' });
+      }
+      console.log('Signature verified successfully');
+    }
+
+    // Parse the body for use
+    const body = JSON.parse(rawBody.toString());
+
     console.log('Sanity webhook received:', {
-      type: req.body._type,
-      id: req.body._id,
+      type: body._type,
+      id: body._id,
       timestamp: new Date().toISOString()
     });
 
@@ -54,8 +94,8 @@ exports.handleSanityWebhook = async (req, res) => {
         body: JSON.stringify({
           event_type: 'sanity-webhook',
           client_payload: {
-            sanity_document_id: req.body._id,
-            sanity_document_type: req.body._type,
+            sanity_document_id: body._id,
+            sanity_document_type: body._type,
             timestamp: new Date().toISOString()
           }
         })
@@ -77,8 +117,8 @@ exports.handleSanityWebhook = async (req, res) => {
       success: true,
       message: 'Deployment triggered',
       document: {
-        id: req.body._id,
-        type: req.body._type
+        id: body._id,
+        type: body._type
       }
     });
 
